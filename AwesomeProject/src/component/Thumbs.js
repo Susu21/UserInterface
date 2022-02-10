@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
     height: THUMB_RADIUS * 2,
     borderRadius: THUMB_RADIUS,
     borderWidth: 2,
-    borderColor: '#7f7f7f',
-    backgroundColor: '#ffffff',
+    borderColor: '#40BFFF',
+    backgroundColor: '#40BFFF',
   },
 });
 
