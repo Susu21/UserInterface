@@ -1,67 +1,43 @@
-import React, {useCallback, useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  TextInput,
-  FlatList,
-} from 'react-native';
-import Slider from 'rn-range-slider';
-
-import Icon from 'react-native-vector-icons/AntDesign';
-import Label from './Label';
-import Notch from './Notch';
-import Rail from './Rail';
-import RailSelected from './RailSelected';
-import Thumb from './Thumbs';
+import React, {useState} from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Requests from './Requests';
-
+import FilterSearch from './FilterSearch';
+import About from './About';
 const Feed = props => {
+  const [state, setState] = useState();
   const [isSelected, setIsSelected] = useState([]);
-
-  const [rangeDisabled, setRangeDisabled] = useState(false);
-  const [floatingLabel, setFloatingLabel] = useState(false);
-  const [min, setMin] = useState(1);
-  const [max, setMax] = useState(1000);
-  const [low, setLow] = useState();
-  const [high, setHigh] = useState();
-  const renderThumb = useCallback(() => <Thumb />, []);
-  const renderRail = useCallback(() => <Rail />, []);
-  const renderRailSelected = useCallback(() => <RailSelected />, []);
-  const renderLabel = useCallback(value => <Label text={value} />, []);
-  const renderNotch = useCallback(() => <Notch />, []);
-  const handleClick = useCallback((low, high) => {
-    setLow(low);
-    setHigh(high);
-  }, []);
-  const toggleRangeEnabled = useCallback(
-    () => setRangeDisabled(!rangeDisabled),
-    [rangeDisabled],
-  );
-  const setMinTo50 = useCallback(() => setMin(50), []);
-  const setMinTo0 = useCallback(() => setMin(0), []);
-  const setMaxTo100 = useCallback(() => setMax(100), []);
-  const setMaxTo500 = useCallback(() => setMax(500), []);
-  const toggleFloatingLabel = useCallback(
-    () => setFloatingLabel(!floatingLabel),
-    [floatingLabel],
-  );
-  const [state, setState] = useState('');
-  const [isShow, setIsShow] = useState('');
-  const setActive = name => {
-    if (isSelected.includes(name)) {
-      const arr = [...isSelected];
-      const index = arr.indexOf(name);
-      arr.splice(index, 1);
-      setIsSelected(arr);
-    } else {
-      setIsSelected(prev => [...prev, name]);
-    }
-  };
   return (
     <>
+      <View style={styles.SubMenu}>
+        <TouchableOpacity
+          style={state == 'Feed' ? styles.SubMenuHover1 : styles.SubMenuText}
+          onFocus
+          onPress={() => {
+            setState('Feed');
+          }}>
+          <Text style={state == 'Feed' ? styles.SubMenuTextReq : null}>
+            Feed
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={state == 'About' ? styles.SubMenuHover1 : styles.SubMenuText}
+          onPress={() => {
+            setState('About');
+          }}>
+          <Text style={state == 'About' ? styles.SubMenuTextReq : null}>
+            About
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={state == 'Request' ? styles.SubMenuHover1 : styles.SubMenuText}
+          onPress={() => {
+            setState('Request');
+          }}>
+          <Text style={state == 'Request' ? styles.SubMenuTextReq : null}>
+            Requests
+          </Text>
+        </TouchableOpacity>
+      </View>
       {state == 'Feed' && <FilterSearch />}
       {state == 'About' && <About />}
       {state == 'Request' && <Requests />}
@@ -145,9 +121,8 @@ const styles = StyleSheet.create({
   },
 
   SubMenuTextReq: {
-    height: 18,
+    height: 20,
     fontSize: 13,
-    textAlign: 'center',
     lineHeight: 18,
     color: '#1778F2',
     fontWeight: 'bold',
@@ -155,27 +130,32 @@ const styles = StyleSheet.create({
   SubMenu: {
     width: 333,
     height: 50,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    marginTop: 10,
-    borderRadius: 25,
-    backgroundColor: '#F5F5F5',
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    borderRadius: 25,
+    marginLeft: 25,
+    marginTop: 35,
+    backgroundColor: '#F5F5F5',
   },
   SubMenuText: {
-    width: 70,
-    height: 18,
-    marginLeft: 20,
+    width: 80,
+    height: 34,
     fontSize: 13,
-    alignSelf: 'center',
+    borderRadius: 55,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  SubMenuText1: {
+    fontSize: 13,
     flexDirection: 'row',
     color: '#C5C5C5',
   },
-  SubMenuHover: {
-    width: 90,
-    height: 30,
-    marginLeft: 25,
-    marginTop: 10,
+
+  SubMenuHover1: {
+    width: 80,
+    height: 34,
     fontSize: 13,
     borderRadius: 55,
     justifyContent: 'center',

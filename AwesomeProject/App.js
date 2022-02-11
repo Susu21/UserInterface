@@ -11,7 +11,6 @@ import {
 
 import Feed from './src/component/Feed';
 import Header from './src/component/Header';
-import Flist from './src/component/Requests';
 import {ScrollView} from 'react-native-gesture-handler';
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -35,42 +34,6 @@ const Home1 = () => {
         <Text style={styles.Role}>Product Designer</Text>
         <Text style={styles.SysName}>@iamronda</Text>
         <Feed style={styles.container} title={Feed} />
-        <Flist style={styles.container} title={Flist} />
-        <View style={[styles.container]}>
-          <View style={styles.SubMenu}>
-            <TouchableOpacity
-              style={state == 'Feed' ? styles.SubMenuHover : styles.SubMenuText}
-              onPress={() => {
-                setState('Feed');
-              }}>
-              <Text style={state == 'Feed' ? styles.SubMenuTextReq : null}>
-                Feed
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={
-                state == 'About' ? styles.SubMenuHover : styles.SubMenuText
-              }
-              onPress={() => {
-                setState('About');
-              }}>
-              <Text style={state == 'About' ? styles.SubMenuTextReq : null}>
-                About
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={
-                state == 'Request' ? styles.SubMenuHover : styles.SubMenuText
-              }
-              onPress={() => {
-                setState('Request');
-              }}>
-              <Text style={state == 'Request' ? styles.SubMenuTextReq : null}>
-                Requests
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -110,10 +73,51 @@ const styles = StyleSheet.create({
   SysName: {
     width: 90,
     height: 22,
-    marginTop: 10,
+    marginTop: 2,
     marginLeft: 125,
     opacity: 87,
     fontSize: 16,
     lineHeight: 22,
+  },
+  SubMenuHover: {
+    width: 90,
+    height: 30,
+    marginLeft: 20,
+
+    fontSize: 13,
+    borderRadius: 55,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    backgroundColor: 'white',
+  },
+  SubMenuTextReq: {
+    height: 18,
+    fontSize: 13,
+    textAlign: 'center',
+    lineHeight: 18,
+    color: '#1778F2',
+    fontWeight: 'bold',
+  },
+  SubMenuText: {
+    width: 70,
+    height: 18,
+    marginLeft: 20,
+    marginBottom: 20,
+    fontSize: 13,
+    alignSelf: 'center',
+    flexDirection: 'row',
+    color: '#C5C5C5',
+  },
+  SubMenu: {
+    width: 333,
+    height: 50,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+    borderRadius: 25,
+    backgroundColor: '#F5F5F5',
+
+    flexDirection: 'row',
   },
 });

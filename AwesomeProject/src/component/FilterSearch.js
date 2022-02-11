@@ -24,7 +24,7 @@ const Feed = props => {
   const [rangeDisabled, setRangeDisabled] = useState(false);
   const [floatingLabel, setFloatingLabel] = useState(false);
   const [min, setMin] = useState(1);
-  const [max, setMax] = useState(1000);
+  const [max, setMax] = useState(10000);
   const [low, setLow] = useState();
   const [high, setHigh] = useState();
   const renderThumb = useCallback(() => <Thumb />, []);
@@ -40,14 +40,7 @@ const Feed = props => {
     () => setRangeDisabled(!rangeDisabled),
     [rangeDisabled],
   );
-  const setMinTo50 = useCallback(() => setMin(50), []);
-  const setMinTo0 = useCallback(() => setMin(0), []);
-  const setMaxTo100 = useCallback(() => setMax(100), []);
-  const setMaxTo500 = useCallback(() => setMax(500), []);
-  const toggleFloatingLabel = useCallback(
-    () => setFloatingLabel(!floatingLabel),
-    [floatingLabel],
-  );
+
   const [state, setState] = useState('');
   const [isShow, setIsShow] = useState('');
   const setActive = name => {
@@ -139,15 +132,15 @@ const Feed = props => {
             <TouchableOpacity
               style={
                 isSelected?.includes('New')
-                  ? styles.Button1
-                  : styles.SelectedBtn
+                  ? styles.SelectedBtn
+                  : styles.Button1
               }
               onPress={New => setActive('New')}>
               <Text
                 style={
                   isSelected?.includes('New')
-                    ? styles.BtnTxt
-                    : styles.SelectedBtnTxt
+                    ? styles.SelectedBtnTxt2
+                    : styles.Btn2Txt
                 }>
                 New
               </Text>
@@ -155,15 +148,15 @@ const Feed = props => {
             <TouchableOpacity
               style={
                 isSelected?.includes('Used')
-                  ? styles.Button2
-                  : styles.SelectedBtn
+                  ? styles.SelectedBtn65
+                  : styles.Button2
               }
               onPress={() => setActive('Used')}>
               <Text
                 style={
                   isSelected?.includes('Used')
-                    ? styles.Btn1Txt
-                    : styles.SelectedBtnTxt
+                    ? styles.SelectedBtnTxt4
+                    : styles.Btn1Txt
                 }>
                 Used
               </Text>
@@ -171,15 +164,15 @@ const Feed = props => {
             <TouchableOpacity
               style={
                 isSelected?.includes('Not Specified')
-                  ? styles.Button3
-                  : styles.SelectedBtn
+                  ? styles.SelectedBtn120
+                  : styles.Button3
               }
               onPress={() => setActive('Not Specified')}>
               <Text
                 style={
                   isSelected?.includes('Not Specified')
-                    ? styles.Btn2Txt
-                    : styles.SelectedBtnTxt1
+                    ? styles.SelectedBtnTxt3
+                    : styles.Btn3Txt
                 }>
                 Not Specified
               </Text>
@@ -191,47 +184,82 @@ const Feed = props => {
               <TouchableOpacity
                 style={
                   isSelected?.includes('All Listings')
-                    ? styles.SelectedBtn
+                    ? styles.SelectedBtn99
                     : styles.BtnByFt1
                 }
-                onPress={Button3 => setActive('All Listings')}>
-                <Text style={styles.BtnTxTByF1}>All Listings</Text>
+                onPress={() => setActive('All Listings')}>
+                <Text
+                  style={
+                    isSelected?.includes('All Listings')
+                      ? styles.SelectedBtnTxt1
+                      : styles.BtnTxTByF1
+                  }>
+                  All Listings
+                </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
                   isSelected?.includes('Accepts Offers')
-                    ? styles.SelectedBtn
+                    ? styles.SelectedBtn129
                     : styles.BtnByFt2
                 }
                 onPress={Button3 => setActive('Accepts Offers')}>
-                <Text style={styles.BtnTxTByF2}>Accepts Offers</Text>
+                <Text
+                  style={
+                    isSelected?.includes('Accepts Offers')
+                      ? styles.SelectedBtnTxt5
+                      : styles.BtnTxTByF2
+                  }>
+                  Accepts Offers
+                </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
                   isSelected?.includes('Auction')
-                    ? styles.SelectedBtn
+                    ? styles.SelectedBtn81
                     : styles.BtnByFt3
                 }
                 onPress={Button3 => setActive('Auction')}>
-                <Text style={styles.BtnTxTByF3}>Auction</Text>
+                <Text
+                  style={
+                    isSelected?.includes('Auction')
+                      ? styles.SelectedBtnTxt6
+                      : styles.BtnTxTByF3
+                  }>
+                  Auction
+                </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
                   isSelected?.includes('Buy It Now')
-                    ? styles.SelectedBtn
+                    ? styles.SelectedBtn98
                     : styles.BtnByFt4
                 }
                 onPress={Button3 => setActive('Buy It Now')}>
-                <Text style={styles.BtnTxTByF4}>Buy It Now</Text>
+                <Text
+                  style={
+                    isSelected?.includes('Buy It Now')
+                      ? styles.SelectedBtnTxt6
+                      : styles.BtnTxTByF4
+                  }>
+                  Buy It Now
+                </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
                   isSelected?.includes('Classified Ads')
-                    ? styles.SelectedBtn
+                    ? styles.SelectedBtn123
                     : styles.BtnByFt5
                 }
-                onPress={Button3 => 'Classified Ads'}>
-                <Text style={styles.BtnTxTByF5}>Classified Ads</Text>
+                onPress={Button3 => setActive('Classified Ads')}>
+                <Text
+                  style={
+                    isSelected?.includes('Classified Ads')
+                      ? styles.SelectedBtnTxt7
+                      : styles.BtnTxTByF5
+                  }>
+                  Classified Ads
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -241,39 +269,67 @@ const Feed = props => {
           <View style={styles.ConditionCon}>
             <TouchableOpacity
               style={
-                isSelected?.includes('Us Only')
-                  ? styles.SelectedBtn
+                isSelected?.includes('US Only')
+                  ? styles.SelectedBtn81
                   : styles.BtnByFt6
               }
-              onPress={Button3 => setActive('Us Only')}>
-              <Text style={styles.BtnTxTByF6}>Us Only</Text>
+              onPress={Button3 => setActive('US Only')}>
+              <Text
+                style={
+                  isSelected?.includes('US Only')
+                    ? styles.SelectedBtnTxt7
+                    : styles.BtnTxTByF5
+                }>
+                US Only
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                isSelected?.includes('Us Only')
-                  ? styles.SelectedBtn
+                isSelected?.includes('North America')
+                  ? styles.SelectedBtn129
                   : styles.BtnByFt7
               }
-              onPress={Button3 => setActive('Not Specified')}>
-              <Text style={styles.BtnTxTByF7}>North America</Text>
+              onPress={Button3 => setActive('North America')}>
+              <Text
+                style={
+                  isSelected?.includes('North America')
+                    ? styles.SelectedBtnTxt7
+                    : styles.BtnTxTByF5
+                }>
+                North America
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={
                 isSelected?.includes('Europe')
-                  ? styles.SelectedBtn
+                  ? styles.SelectedBtn77
                   : styles.BtnByFt8
               }
               onPress={Button3 => setActive('Europe')}>
-              <Text style={styles.BtnTxTByF8}>Europe</Text>
+              <Text
+                style={
+                  isSelected?.includes('Europe')
+                    ? styles.SelectedBtnTxt7
+                    : styles.BtnTxTByF5
+                }>
+                Europe
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              sstyle={
+              style={
                 isSelected?.includes('Asia')
-                  ? styles.SelectedBtn
+                  ? styles.SelectedBtn70
                   : styles.BtnByFt9
               }
               onPress={Button3 => setActive('Asia')}>
-              <Text style={styles.BtnTxTByF9}>Asia</Text>
+              <Text
+                style={
+                  isSelected?.includes('Asia')
+                    ? styles.SelectedBtnTxt7
+                    : styles.BtnTxTByF5
+                }>
+                Asia
+              </Text>
             </TouchableOpacity>
           </View>
           <View>
@@ -455,7 +511,7 @@ const styles = StyleSheet.create({
   Condition: {
     width: '100%',
     height: 21,
-    marginLeft: 15,
+    marginLeft: 20,
     marginTop: 5,
     fontWeight: 'bold',
     fontSize: 14,
@@ -474,7 +530,7 @@ const styles = StyleSheet.create({
   FilterSearch: {
     width: 100,
     height: 19,
-    marginLeft: 5,
+    marginLeft: 10,
     fontWeight: 'bold',
     fontSize: 16,
     lineHeight: 24,
@@ -486,6 +542,7 @@ const styles = StyleSheet.create({
   ConditionCon: {
     width: '100%',
     marginBottom: 10,
+    marginLeft: 5,
     flexDirection: 'row',
     flexWrap: 'wrap',
     backgroundColor: 'white',
@@ -508,14 +565,19 @@ const styles = StyleSheet.create({
   Btn1Txt: {
     width: '100%',
     marginTop: 16,
-    marginLeft: 20,
+    marginLeft: 18,
     fontSize: 12,
     color: '#9098B1',
   },
   Btn2Txt: {
-    width: '100%',
     marginTop: 16,
-    marginLeft: 20,
+    marginLeft: 16,
+    fontSize: 12,
+    color: '#9098B1',
+  },
+  Btn3Txt: {
+    marginTop: 16,
+    marginLeft: 22,
     fontSize: 12,
     color: '#9098B1',
   },
@@ -625,14 +687,13 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   BtnTxTByF1: {
-    marginTop: 14,
+    marginTop: 15,
     marginLeft: 18,
     color: '#9098B1',
     fontSize: 12,
   },
   BtnTxTByF2: {
-    width: '100%',
-    marginTop: 14,
+    marginTop: 15,
     marginLeft: 23,
     color: '#9098B1',
     fontSize: 12,
@@ -698,11 +759,91 @@ const styles = StyleSheet.create({
     marginLeft: 160,
   },
   SelectedBtn: {
-    width: 130,
+    width: 62,
     height: 50,
     borderRadius: 5,
-    marginLeft: 10,
+    marginLeft: 13,
     marginTop: 10,
+    backgroundColor: '#40BFFF1A',
+  },
+  SelectedBtn70: {
+    width: 70,
+    height: 50,
+    borderRadius: 5,
+    marginLeft: 13,
+    marginTop: 10,
+    backgroundColor: '#40BFFF1A',
+  },
+  SelectedBtn77: {
+    width: 77,
+    height: 50,
+    borderRadius: 5,
+    marginLeft: 11,
+    marginTop: 10,
+    backgroundColor: '#40BFFF1A',
+  },
+  SelectedBtn65: {
+    width: 66,
+    height: 50,
+    borderRadius: 5,
+    marginLeft: 13,
+    marginTop: 10,
+    backgroundColor: '#40BFFF1A',
+  },
+  SelectedBtn120: {
+    width: 120,
+    height: 50,
+    borderRadius: 5,
+    marginLeft: 15,
+    marginTop: 10,
+    backgroundColor: '#40BFFF1A',
+  },
+  SelectedBtn59: {
+    width: 59,
+    height: 50,
+    borderRadius: 5,
+    marginLeft: 15,
+    marginTop: 10,
+    backgroundColor: '#40BFFF1A',
+  },
+  SelectedBtn99: {
+    width: 99,
+    height: 47,
+    borderRadius: 5,
+    marginLeft: 11,
+    marginTop: 11,
+    backgroundColor: '#40BFFF1A',
+  },
+  SelectedBtn129: {
+    width: 128,
+    height: 48,
+    borderRadius: 5,
+    marginLeft: 11,
+    marginTop: 11,
+    backgroundColor: '#40BFFF1A',
+  },
+  SelectedBtn123: {
+    width: 128,
+    height: 48,
+    borderRadius: 5,
+    marginLeft: 11,
+    marginTop: 11,
+    backgroundColor: '#40BFFF1A',
+  },
+  SelectedBtn81: {
+    width: 81,
+    height: 47,
+    borderRadius: 5,
+    marginLeft: 11,
+    marginTop: 11,
+    backgroundColor: '#40BFFF1A',
+  },
+  SelectedBtn98: {
+    width: 98,
+    height: 47,
+    borderRadius: 5,
+    marginLeft: 11,
+    marginTop: 11,
     backgroundColor: '#40BFFF1A',
   },
   SelectedBtnTxt: {
@@ -713,15 +854,57 @@ const styles = StyleSheet.create({
     color: '#40BFFF',
   },
   SelectedBtnTxt1: {
-    marginLeft: 22,
+    marginLeft: 17,
+    marginTop: 16,
+    fontWeight: 'bold',
+    fontSize: 12,
+    color: '#40BFFF',
+  },
+  SelectedBtnTxt2: {
+    marginLeft: 19,
+    marginTop: 17,
+    fontWeight: 'bold',
+    fontSize: 12,
+    color: '#40BFFF',
+  },
+  SelectedBtnTxt3: {
+    marginLeft: 23,
+    marginTop: 17,
+    fontWeight: 'bold',
+    fontSize: 12,
+    color: '#40BFFF',
+  },
+  SelectedBtnTxt4: {
+    marginLeft: 21,
+    marginTop: 17,
+    fontWeight: 'bold',
+    fontSize: 12,
+    color: '#40BFFF',
+  },
+  SelectedBtnTxt5: {
+    marginLeft: 23,
+    marginTop: 15,
+    fontWeight: 'bold',
+    fontSize: 12,
+    color: '#40BFFF',
+  },
+  SelectedBtnTxt6: {
+    marginLeft: 18,
     marginTop: 14,
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: 12,
+    color: '#40BFFF',
+  },
+  SelectedBtnTxt7: {
+    marginLeft: 21,
+    marginTop: 14,
+    fontWeight: 'bold',
+    fontSize: 12,
     color: '#40BFFF',
   },
   Close: {
     marginTop: 4,
-    marginLeft: 10,
+    marginLeft: 20,
     letterSpacing: 1,
   },
   ScrollView: {
