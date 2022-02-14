@@ -36,14 +36,9 @@ const Feed = props => {
     setLow(low);
     setHigh(high);
   }, []);
-  const toggleRangeEnabled = useCallback(
-    () => setRangeDisabled(!rangeDisabled),
-    [rangeDisabled],
-  );
-
-  const [state, setState] = useState('');
-  const [isShow, setIsShow] = useState('');
+  const [conditionSel, setConditionSel] = useState('');
   const setActive = name => {
+    console.log('isSelected', isSelected);
     if (isSelected.includes(name)) {
       const arr = [...isSelected];
       const index = arr.indexOf(name);
@@ -56,30 +51,9 @@ const Feed = props => {
   return (
     <>
       <ScrollView>
-        <View
-          style={{
-            marginTop: 35,
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-            }}>
-            <TouchableOpacity>
-              <Icon
-                name="close"
-                size={17}
-                color={'#9098B1'}
-                style={styles.Close}
-                onPress={() => {
-                  setState('Requests');
-                }}></Icon>
-            </TouchableOpacity>
-            <Text style={styles.FilterSearch}>Filter Search</Text>
-          </View>
-          <Text style={styles.FilterContainer}></Text>
+        <Text style={styles.FilterContainer}></Text>
 
-          <Text style={styles.PriceRange}>Price Range</Text>
-        </View>
+        <Text style={styles.PriceRange}>Price Range</Text>
         <View style={styles.TextInput}>
           <TextInput value={low ? '$' + low.toString() : ''}></TextInput>
           <View style={styles.TextInput1}>
@@ -131,14 +105,12 @@ const Feed = props => {
           <View style={styles.ConditionCon}>
             <TouchableOpacity
               style={
-                isSelected?.includes('New')
-                  ? styles.SelectedBtn
-                  : styles.Button1
+                conditionSel == 'New' ? styles.SelectedBtn : styles.Button1
               }
-              onPress={New => setActive('New')}>
+              onPress={New => setConditionSel('New')}>
               <Text
                 style={
-                  isSelected?.includes('New')
+                  conditionSel == 'New'
                     ? styles.SelectedBtnTxt2
                     : styles.Btn2Txt
                 }>
@@ -147,14 +119,12 @@ const Feed = props => {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                isSelected?.includes('Used')
-                  ? styles.SelectedBtn65
-                  : styles.Button2
+                conditionSel == 'Used' ? styles.SelectedBtn65 : styles.Button2
               }
-              onPress={() => setActive('Used')}>
+              onPress={Used => setConditionSel('Used')}>
               <Text
                 style={
-                  isSelected?.includes('Used')
+                  conditionSel == 'Used'
                     ? styles.SelectedBtnTxt4
                     : styles.Btn1Txt
                 }>
@@ -163,14 +133,14 @@ const Feed = props => {
             </TouchableOpacity>
             <TouchableOpacity
               style={
-                isSelected?.includes('Not Specified')
+                conditionSel == 'Not Specified'
                   ? styles.SelectedBtn120
                   : styles.Button3
               }
-              onPress={() => setActive('Not Specified')}>
+              onPress={() => setConditionSel('Not Specified')}>
               <Text
                 style={
-                  isSelected?.includes('Not Specified')
+                  conditionSel == 'Not Specified'
                     ? styles.SelectedBtnTxt3
                     : styles.Btn3Txt
                 }>
@@ -489,7 +459,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     fontFamily: 'Caption/LargeBold',
-    marginLeft: 20,
+    marginLeft: 22,
     marginTop: -53,
     color: '#9098B1',
   },
@@ -506,7 +476,7 @@ const styles = StyleSheet.create({
     width: '95%',
     height: 80,
     marginTop: -25,
-    marginLeft: 8,
+    marginLeft: 10,
   },
   Condition: {
     width: '100%',

@@ -38,7 +38,7 @@ const Feed = props => {
           </Text>
         </TouchableOpacity>
       </View>
-      {state == 'Feed' && <FilterSearch />}
+      {state == 'Feed' && <FilterSearch setState={setState} />}
       {state == 'About' && <About />}
       {state == 'Request' && <Requests />}
     </>

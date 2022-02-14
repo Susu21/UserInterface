@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   SysName: {
     width: 90,
     height: 22,
-    marginTop: 2,
+    marginTop: 6,
     marginLeft: 125,
     opacity: 87,
     fontSize: 16,
