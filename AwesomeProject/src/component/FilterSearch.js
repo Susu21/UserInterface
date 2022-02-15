@@ -1,22 +1,18 @@
 import React, {useCallback, useState} from 'react';
 import {
+  ScrollView,
   StyleSheet,
   Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
   TextInput,
-  FlatList,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import Slider from 'rn-range-slider';
-
-import Icon from 'react-native-vector-icons/AntDesign';
 import Label from './Label';
 import Notch from './Notch';
 import Rail from './Rail';
 import RailSelected from './RailSelected';
 import Thumb from './Thumbs';
-import Requests from './Requests';
 
 const Feed = props => {
   const [isSelected, setIsSelected] = useState([]);
@@ -38,7 +34,6 @@ const Feed = props => {
   }, []);
   const [conditionSel, setConditionSel] = useState('');
   const setActive = name => {
-    console.log('isSelected', isSelected);
     if (isSelected.includes(name)) {
       const arr = [...isSelected];
       const index = arr.indexOf(name);
@@ -48,6 +43,8 @@ const Feed = props => {
       setIsSelected(prev => [...prev, name]);
     }
   };
+  console.log('isSelected', isSelected);
+
   return (
     <>
       <ScrollView>

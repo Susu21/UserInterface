@@ -11,7 +11,6 @@ const Feed = props => {
       <View style={styles.SubMenu}>
         <TouchableOpacity
           style={state == 'Feed' ? styles.SubMenuHover1 : styles.SubMenuText}
-          onFocus
           onPress={() => {
             setState('Feed');
           }}>

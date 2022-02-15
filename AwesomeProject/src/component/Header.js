@@ -1,15 +1,20 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const Header = props => {
+  const navigation = useNavigation();
+
   return (
     <View>
-      <Image
-        style={styles.profilePic}
-        source={{
-          uri: 'https://www.whatsappprofiledpimages.com/wp-content/uploads/2021/08/Profile-Photo-Wallpaper.jpg',
-        }}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate('OnPressFeed')}>
+        <Image
+          style={styles.profilePic}
+          source={{
+            uri: 'https://www.whatsappprofiledpimages.com/wp-content/uploads/2021/08/Profile-Photo-Wallpaper.jpg',
+          }}
+        />
+      </TouchableOpacity>
       <Text style={styles.title}>Profile</Text>
     </View>
   );
