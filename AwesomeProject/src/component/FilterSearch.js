@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Slider from 'rn-range-slider';
+import Slider from '@react-native-community/slider';
 import Label from './Label';
 import Notch from './Notch';
 import Rail from './Rail';

@@ -5,13 +5,16 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import Slider from 'rn-range-slider';
+import Slider from '@react-native-community/slider';
 import React, {useCallback, useState} from 'react';
 import Label from '../component/Label';
 
 const OnPressFeed = props => {
   const [conditionSel, setConditionSel] = useState('');
-
+  const Thumb = useCallback();
+  const Rail = useCallback();
+  const RailSelected = useCallback();
+  const Notch = useCallback();
   const [state, setState] = useState();
   const [low, setLow] = useState();
   const [high, setHigh] = useState();
