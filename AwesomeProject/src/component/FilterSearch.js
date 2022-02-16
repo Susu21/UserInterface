@@ -294,13 +294,31 @@ const Feed = props => {
           </View>
         )}
         {conditionSel == 'New' && (
-          <Feed setState={setState} hideShow={true} hide={true} hideBt={true} />
+          <Feed
+            setState={setState}
+            hideShow={true}
+            hide={false}
+            hideBt={true}
+            hidePR={true}
+          />
         )}
         {conditionSel == 'Used' && (
-          <Feed setState={setState} hideShow={true} hide={true} hideBt={true} />
+          <Feed
+            setState={setState}
+            hideShow={true}
+            hide={true}
+            hideBt={true}
+            hidePR={true}
+          />
         )}
         {conditionSel == 'Not Specified' && (
-          <Feed setState={setState} hideShow={true} hide={true} hideBt={true} />
+          <Feed
+            setState={setState}
+            hideShow={true}
+            hide={true}
+            hideBt={true}
+            hidePR={true}
+          />
         )}
 
         {!props.hideBt && (
