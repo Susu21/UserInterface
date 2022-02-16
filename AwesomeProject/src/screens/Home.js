@@ -1,8 +1,8 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import Feed from '../component/Feed';
 import Header from '../component/Header';
-
+import PRange from '../component/PriceRange';
 const Home = props => {
   return (
     <SafeAreaView style={styles.safearea}>
@@ -12,6 +12,7 @@ const Home = props => {
         <Text style={styles.Role}>Product Designer</Text>
         <Text style={styles.SysName}>@iamronda</Text>
         <Feed style={styles.container} title={Feed} />
+        {/* <PRange style={styles.container} title={PRange} /> */}
       </ScrollView>
     </SafeAreaView>
   );
@@ -26,7 +27,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   safearea: {
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
+    flex: 1,
   },
   Role: {
     width: 126,

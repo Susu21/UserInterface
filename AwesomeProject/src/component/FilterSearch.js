@@ -13,9 +13,12 @@ import Notch from './Notch';
 import Rail from './Rail';
 import RailSelected from './RailSelected';
 import Thumb from './Thumbs';
+import {useNavigation} from '@react-navigation/native';
 
 const Feed = props => {
   const [isSelected, setIsSelected] = useState([]);
+  const navigation = useNavigation();
+  const [state, setState] = useState();
 
   const [rangeDisabled, setRangeDisabled] = useState(false);
   const [floatingLabel, setFloatingLabel] = useState(false);
@@ -32,7 +35,7 @@ const Feed = props => {
     setLow(low);
     setHigh(high);
   }, []);
-  const [conditionSel, setConditionSel] = useState('');
+  const [conditionSel, setConditionSel] = useState();
   const setActive = name => {
     if (isSelected.includes(name)) {
       const arr = [...isSelected];
@@ -48,48 +51,32 @@ const Feed = props => {
   return (
     <>
       <ScrollView>
-        <Text style={styles.FilterContainer}></Text>
-
-        <Text style={styles.PriceRange}>Price Range</Text>
-        <View style={styles.TextInput}>
-          <TextInput value={low ? '$' + low.toString() : ''}></TextInput>
-          <View style={styles.TextInput1}>
-            <TextInput value={high ? '$' + high.toString() : ''}></TextInput>
+        {props.hideShow && (
+          <View>
+            <Text style={styles.PriceRange}>Price Range</Text>
+            <View style={styles.TextInput}>
+              <TextInput value={low ? '$' + low.toString() : ''}></TextInput>
+              <View style={styles.TextInput1}>
+                <TextInput
+                  value={high ? '$' + high.toString() : ''}></TextInput>
+              </View>
+            </View>
+            <Slider
+              style={styles.slider}
+              min={min}
+              max={max}
+              step={0}
+              disableRange={rangeDisabled}
+              floatingLabel={floatingLabel}
+              renderThumb={renderThumb}
+              renderRail={renderRail}
+              renderRailSelected={renderRailSelected}
+              renderLabel={renderLabel}
+              renderNotch={renderNotch}
+              onValueChanged={handleClick}
+            />
           </View>
-        </View>
-        <Slider
-          style={styles.slider}
-          min={min}
-          max={max}
-          step={1}
-          disableRange={rangeDisabled}
-          floatingLabel={floatingLabel}
-          renderThumb={renderThumb}
-          renderRail={renderRail}
-          renderRailSelected={renderRailSelected}
-          renderLabel={renderLabel}
-          renderNotch={renderNotch}
-          onValueChanged={handleClick}
-        />
-        <View style={styles.horizontalContainer}>
-          <Text style={styles.valueText}>{'low'}</Text>
-          <Text style={styles.valueText}>{'high'}</Text>
-        </View>
-
-        {/* <Slider
-            style={styles.slider}
-            min={min}
-            max={max}
-            step={1}
-            disableRange={rangeDisabled}
-            floatingLabel={floatingLabel}
-            renderThumb={renderThumb}
-            renderRail={renderRail}
-            renderRailSelected={renderRailSelected}
-            renderLabel={renderLabel}
-            renderNotch={renderNotch}
-            onValueChanged={handleClick}
-          /> */}
+        )}
         <View
           style={{
             flexDirection: 'row',
@@ -98,209 +85,226 @@ const Feed = props => {
           <Text style={styles.Max}>MAX</Text>
         </View>
         <View>
-          <Text style={styles.Condition}>Condition</Text>
-          <View style={styles.ConditionCon}>
-            <TouchableOpacity
-              style={
-                conditionSel == 'New' ? styles.SelectedBtn : styles.Button1
-              }
-              onPress={New => setConditionSel('New')}>
-              <Text
-                style={
-                  conditionSel == 'New'
-                    ? styles.SelectedBtnTxt2
-                    : styles.Btn2Txt
-                }>
-                New
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={
-                conditionSel == 'Used' ? styles.SelectedBtn65 : styles.Button2
-              }
-              onPress={Used => setConditionSel('Used')}>
-              <Text
-                style={
-                  conditionSel == 'Used'
-                    ? styles.SelectedBtnTxt4
-                    : styles.Btn1Txt
-                }>
-                Used
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={
-                conditionSel == 'Not Specified'
-                  ? styles.SelectedBtn120
-                  : styles.Button3
-              }
-              onPress={() => setConditionSel('Not Specified')}>
-              <Text
-                style={
-                  conditionSel == 'Not Specified'
-                    ? styles.SelectedBtnTxt3
-                    : styles.Btn3Txt
-                }>
-                Not Specified
-              </Text>
-            </TouchableOpacity>
-          </View>
           <View>
-            <Text style={styles.Condition}>Buying Format</Text>
+            <Text style={styles.Condition}>Condition</Text>
             <View style={styles.ConditionCon}>
               <TouchableOpacity
                 style={
-                  isSelected?.includes('All Listings')
-                    ? styles.SelectedBtn99
-                    : styles.BtnByFt1
+                  conditionSel == 'New' ? styles.SelectedBtn : styles.Button1
                 }
-                onPress={() => setActive('All Listings')}>
+                onPress={New => setConditionSel('New')}>
                 <Text
                   style={
-                    isSelected?.includes('All Listings')
-                      ? styles.SelectedBtnTxt1
-                      : styles.BtnTxTByF1
+                    conditionSel == 'New'
+                      ? styles.SelectedBtnTxt2
+                      : styles.Btn2Txt
                   }>
-                  All Listings
+                  New
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
-                  isSelected?.includes('Accepts Offers')
-                    ? styles.SelectedBtn129
-                    : styles.BtnByFt2
+                  conditionSel == 'Used' ? styles.SelectedBtn65 : styles.Button2
                 }
-                onPress={Button3 => setActive('Accepts Offers')}>
+                onPress={Used => setConditionSel('Used')}>
                 <Text
                   style={
-                    isSelected?.includes('Accepts Offers')
-                      ? styles.SelectedBtnTxt5
-                      : styles.BtnTxTByF2
+                    conditionSel == 'Used'
+                      ? styles.SelectedBtnTxt4
+                      : styles.Btn1Txt
                   }>
-                  Accepts Offers
+                  Used
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
-                  isSelected?.includes('Auction')
-                    ? styles.SelectedBtn81
-                    : styles.BtnByFt3
+                  conditionSel == 'Not Specified'
+                    ? styles.SelectedBtn120
+                    : styles.Button3
                 }
-                onPress={Button3 => setActive('Auction')}>
+                onPress={() => setConditionSel('Not Specified')}>
                 <Text
                   style={
-                    isSelected?.includes('Auction')
-                      ? styles.SelectedBtnTxt6
-                      : styles.BtnTxTByF3
+                    conditionSel == 'Not Specified'
+                      ? styles.SelectedBtnTxt3
+                      : styles.Btn3Txt
                   }>
-                  Auction
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={
-                  isSelected?.includes('Buy It Now')
-                    ? styles.SelectedBtn98
-                    : styles.BtnByFt4
-                }
-                onPress={Button3 => setActive('Buy It Now')}>
-                <Text
-                  style={
-                    isSelected?.includes('Buy It Now')
-                      ? styles.SelectedBtnTxt6
-                      : styles.BtnTxTByF4
-                  }>
-                  Buy It Now
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={
-                  isSelected?.includes('Classified Ads')
-                    ? styles.SelectedBtn123
-                    : styles.BtnByFt5
-                }
-                onPress={Button3 => setActive('Classified Ads')}>
-                <Text
-                  style={
-                    isSelected?.includes('Classified Ads')
-                      ? styles.SelectedBtnTxt7
-                      : styles.BtnTxTByF5
-                  }>
-                  Classified Ads
+                  Not Specified
                 </Text>
               </TouchableOpacity>
             </View>
           </View>
-        </View>
-        <View>
-          <Text style={styles.Condition}>Item Location</Text>
-          <View style={styles.ConditionCon}>
-            <TouchableOpacity
-              style={
-                isSelected?.includes('US Only')
-                  ? styles.SelectedBtn81
-                  : styles.BtnByFt6
-              }
-              onPress={Button3 => setActive('US Only')}>
-              <Text
-                style={
-                  isSelected?.includes('US Only')
-                    ? styles.SelectedBtnTxt7
-                    : styles.BtnTxTByF5
-                }>
-                US Only
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={
-                isSelected?.includes('North America')
-                  ? styles.SelectedBtn129
-                  : styles.BtnByFt7
-              }
-              onPress={Button3 => setActive('North America')}>
-              <Text
-                style={
-                  isSelected?.includes('North America')
-                    ? styles.SelectedBtnTxt7
-                    : styles.BtnTxTByF5
-                }>
-                North America
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={
-                isSelected?.includes('Europe')
-                  ? styles.SelectedBtn77
-                  : styles.BtnByFt8
-              }
-              onPress={Button3 => setActive('Europe')}>
-              <Text
-                style={
-                  isSelected?.includes('Europe')
-                    ? styles.SelectedBtnTxt7
-                    : styles.BtnTxTByF5
-                }>
-                Europe
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={
-                isSelected?.includes('Asia')
-                  ? styles.SelectedBtn70
-                  : styles.BtnByFt9
-              }
-              onPress={Button3 => setActive('Asia')}>
-              <Text
-                style={
-                  isSelected?.includes('Asia')
-                    ? styles.SelectedBtnTxt7
-                    : styles.BtnTxTByF5
-                }>
-                Asia
-              </Text>
-            </TouchableOpacity>
-          </View>
+          {props.hideShow && (
+            <View>
+              <View>
+                <Text style={styles.Condition}>Buying Format</Text>
+                <View style={styles.ConditionCon}>
+                  <TouchableOpacity
+                    style={
+                      isSelected?.includes('All Listings')
+                        ? styles.SelectedBtn99
+                        : styles.BtnByFt1
+                    }
+                    onPress={() => setActive('All Listings')}>
+                    <Text
+                      style={
+                        isSelected?.includes('All Listings')
+                          ? styles.SelectedBtnTxt1
+                          : styles.BtnTxTByF1
+                      }>
+                      All Listings
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={
+                      isSelected?.includes('Accepts Offers')
+                        ? styles.SelectedBtn129
+                        : styles.BtnByFt2
+                    }
+                    onPress={Button3 => setActive('Accepts Offers')}>
+                    <Text
+                      style={
+                        isSelected?.includes('Accepts Offers')
+                          ? styles.SelectedBtnTxt5
+                          : styles.BtnTxTByF2
+                      }>
+                      Accepts Offers
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={
+                      isSelected?.includes('Auction')
+                        ? styles.SelectedBtn81
+                        : styles.BtnByFt3
+                    }
+                    onPress={Button3 => setActive('Auction')}>
+                    <Text
+                      style={
+                        isSelected?.includes('Auction')
+                          ? styles.SelectedBtnTxt6
+                          : styles.BtnTxTByF3
+                      }>
+                      Auction
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={
+                      isSelected?.includes('Buy It Now')
+                        ? styles.SelectedBtn98
+                        : styles.BtnByFt4
+                    }
+                    onPress={Button3 => setActive('Buy It Now')}>
+                    <Text
+                      style={
+                        isSelected?.includes('Buy It Now')
+                          ? styles.SelectedBtnTxt6
+                          : styles.BtnTxTByF4
+                      }>
+                      Buy It Now
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={
+                      isSelected?.includes('Classified Ads')
+                        ? styles.SelectedBtn123
+                        : styles.BtnByFt5
+                    }
+                    onPress={Button3 => setActive('Classified Ads')}>
+                    <Text
+                      style={
+                        isSelected?.includes('Classified Ads')
+                          ? styles.SelectedBtnTxt7
+                          : styles.BtnTxTByF5
+                      }>
+                      Classified Ads
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <View>
+                <Text style={styles.Condition}>Item Location</Text>
+                <View style={styles.ConditionCon}>
+                  <TouchableOpacity
+                    style={
+                      isSelected?.includes('US Only')
+                        ? styles.SelectedBtn81
+                        : styles.BtnByFt6
+                    }
+                    onPress={Button3 => setActive('US Only')}>
+                    <Text
+                      style={
+                        isSelected?.includes('US Only')
+                          ? styles.SelectedBtnTxt7
+                          : styles.BtnTxTByF5
+                      }>
+                      US Only
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={
+                      isSelected?.includes('North America')
+                        ? styles.SelectedBtn129
+                        : styles.BtnByFt7
+                    }
+                    onPress={Button3 => setActive('North America')}>
+                    <Text
+                      style={
+                        isSelected?.includes('North America')
+                          ? styles.SelectedBtnTxt7
+                          : styles.BtnTxTByF5
+                      }>
+                      North America
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={
+                      isSelected?.includes('Europe')
+                        ? styles.SelectedBtn77
+                        : styles.BtnByFt8
+                    }
+                    onPress={Button3 => setActive('Europe')}>
+                    <Text
+                      style={
+                        isSelected?.includes('Europe')
+                          ? styles.SelectedBtnTxt7
+                          : styles.BtnTxTByF5
+                      }>
+                      Europe
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={
+                      isSelected?.includes('Asia')
+                        ? styles.SelectedBtn70
+                        : styles.BtnByFt9
+                    }
+                    onPress={Button3 => setActive('Asia')}>
+                    <Text
+                      style={
+                        isSelected?.includes('Asia')
+                          ? styles.SelectedBtnTxt7
+                          : styles.BtnTxTByF5
+                      }>
+                      Asia
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          )}
+          {conditionSel == 'New' && (
+            <Feed setState={setState} hideShow={true} />
+          )}
+          {conditionSel == 'Used' && (
+            <Feed setState={setState} hideShow={false} />
+          )}
+          {conditionSel == 'Not Specified' && (
+            <Feed setState={setState} hideShow={false} />
+          )}
           <View>
-            <TouchableOpacity style={styles.Apply}>
+            <TouchableOpacity
+              style={styles.Apply}
+              onPress={() => navigation.navigate('Home')}>
               <Text style={styles.ApplyTxt}>Apply</Text>
             </TouchableOpacity>
           </View>
@@ -327,6 +331,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 5,
     borderWidth: 0.5,
+
     borderColor: '#EBF0FF',
     flexDirection: 'row',
     color: '#9098B1',
@@ -456,8 +461,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     fontFamily: 'Caption/LargeBold',
-    marginLeft: 22,
-    marginTop: -53,
+    marginLeft: 20,
+    marginTop: -55,
     color: '#9098B1',
   },
   Max: {
@@ -466,14 +471,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     color: '#9098B1',
-    marginTop: -53,
-    marginLeft: 300,
+    marginTop: -55,
+    marginLeft: 308,
   },
   slider: {
-    width: '95%',
-    height: 80,
-    marginTop: -25,
-    marginLeft: 10,
+    width: '99%',
+    height: 60,
+    marginTop: 5,
+    marginLeft: 5,
   },
   Condition: {
     width: '100%',
