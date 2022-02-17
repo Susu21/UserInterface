@@ -17,6 +17,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const Feed = props => {
   const [isSelected, setIsSelected] = useState([]);
+
   const navigation = useNavigation();
   const [state, setState] = useState();
 
@@ -51,92 +52,90 @@ const Feed = props => {
   return (
     <>
       <ScrollView>
-        {props.hidePR && (
-          <View>
-            <Text style={styles.PriceRange}>Price Range</Text>
-            <View style={styles.TextInput}>
-              <TextInput value={low ? '$' + low.toString() : ''}></TextInput>
-              <View style={styles.TextInput1}>
-                <TextInput
-                  value={high ? '$' + high.toString() : ''}></TextInput>
-              </View>
-            </View>
-            <Slider
-              style={styles.slider}
-              min={min}
-              max={max}
-              step={0}
-              disableRange={rangeDisabled}
-              floatingLabel={floatingLabel}
-              renderThumb={renderThumb}
-              renderRail={renderRail}
-              renderRailSelected={renderRailSelected}
-              renderLabel={renderLabel}
-              renderNotch={renderNotch}
-              onValueChanged={handleClick}
-            />
-          </View>
-        )}
-        <View
-          style={{
-            flexDirection: 'row',
-          }}>
-          <Text style={styles.Min}>MIN</Text>
-          <Text style={styles.Max}>MAX</Text>
-        </View>
-        {!props.hide && (
-          <View>
-            <Text style={styles.Condition}>Condition</Text>
-            <View style={styles.ConditionCon}>
-              <TouchableOpacity
+        <View>
+          <Text style={styles.Condition}>Condition</Text>
+          <View style={styles.ConditionCon}>
+            <TouchableOpacity
+              style={
+                conditionSel == 'New' ? styles.SelectedBtn : styles.Button1
+              }
+              onPress={New => setConditionSel('New')}>
+              <Text
                 style={
-                  conditionSel == 'New' ? styles.SelectedBtn : styles.Button1
-                }
-                onPress={New => setConditionSel('New')}>
-                <Text
-                  style={
-                    conditionSel == 'New'
-                      ? styles.SelectedBtnTxt2
-                      : styles.Btn2Txt
-                  }>
-                  New
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
+                  conditionSel == 'New'
+                    ? styles.SelectedBtnTxt2
+                    : styles.Btn2Txt
+                }>
+                New
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                conditionSel == 'Used' ? styles.SelectedBtn65 : styles.Button2
+              }
+              onPress={Used => setConditionSel('Used')}>
+              <Text
                 style={
-                  conditionSel == 'Used' ? styles.SelectedBtn65 : styles.Button2
-                }
-                onPress={Used => setConditionSel('Used')}>
-                <Text
-                  style={
-                    conditionSel == 'Used'
-                      ? styles.SelectedBtnTxt4
-                      : styles.Btn1Txt
-                  }>
-                  Used
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
+                  conditionSel == 'Used'
+                    ? styles.SelectedBtnTxt4
+                    : styles.Btn1Txt
+                }>
+                Used
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                conditionSel == 'Not Specified'
+                  ? styles.SelectedBtn120
+                  : styles.Button3
+              }
+              onPress={() => setConditionSel('Not Specified')}>
+              <Text
                 style={
                   conditionSel == 'Not Specified'
-                    ? styles.SelectedBtn120
-                    : styles.Button3
-                }
-                onPress={() => setConditionSel('Not Specified')}>
-                <Text
-                  style={
-                    conditionSel == 'Not Specified'
-                      ? styles.SelectedBtnTxt3
-                      : styles.Btn3Txt
-                  }>
-                  Not Specified
-                </Text>
-              </TouchableOpacity>
-            </View>
+                    ? styles.SelectedBtnTxt3
+                    : styles.Btn3Txt
+                }>
+                Not Specified
+              </Text>
+            </TouchableOpacity>
           </View>
-        )}
-        {props.hideShow && (
+        </View>
+        {/* {!props.hideCd && ( */}
+        {/* )} */}
+        {conditionSel == 'New' && (
           <View>
+            <View>
+              <Text style={styles.PriceRange}>Price Range</Text>
+              <View style={styles.TextInput}>
+                <TextInput value={low ? '$' + low.toString() : ''}></TextInput>
+                <View style={styles.TextInput1}>
+                  <TextInput
+                    value={high ? '$' + high.toString() : ''}></TextInput>
+                </View>
+              </View>
+              <Slider
+                style={styles.slider}
+                min={min}
+                max={max}
+                step={0}
+                disableRange={rangeDisabled}
+                floatingLabel={floatingLabel}
+                renderThumb={renderThumb}
+                renderRail={renderRail}
+                renderRailSelected={renderRailSelected}
+                renderLabel={renderLabel}
+                renderNotch={renderNotch}
+                onValueChanged={handleClick}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+              }}>
+              <Text style={styles.Min}>MIN</Text>
+              <Text style={styles.Max}>MAX</Text>
+            </View>
             <View>
               <Text style={styles.Condition}>Buying Format</Text>
               <View style={styles.ConditionCon}>
@@ -293,20 +292,20 @@ const Feed = props => {
             </View>
           </View>
         )}
-        {conditionSel == 'New' && (
-          <Feed
-            setState={setState}
-            hideShow={true}
-            hide={false}
-            hideBt={true}
-            hidePR={true}
-          />
-        )}
+        {/* {conditionSel == 'New' && ( */}
+        {/* <Feed
+          setState={setState}
+          hideShow={true}
+          hideCd={true}
+          hideBt={true}
+          hidePR={true}
+        /> */}
+        {/* )}
         {conditionSel == 'Used' && (
           <Feed
             setState={setState}
             hideShow={true}
-            hide={true}
+            hideCd={true}
             hideBt={true}
             hidePR={true}
           />
@@ -315,12 +314,11 @@ const Feed = props => {
           <Feed
             setState={setState}
             hideShow={true}
-            hide={true}
+            hideCd={true}
             hideBt={true}
             hidePR={true}
           />
-        )}
-
+        )} */}
         {!props.hideBt && (
           <View>
             <TouchableOpacity

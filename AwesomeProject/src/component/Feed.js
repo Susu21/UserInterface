@@ -37,7 +37,7 @@ const Feed = props => {
           </Text>
         </TouchableOpacity>
       </View>
-      {state == 'Feed' && <FilterSearch setState={setState} hideShow={true} />}
+      {state == 'Feed' && <FilterSearch setState={setState} hideShow={false} />}
       {state == 'About' && <About />}
       {state == 'Request' && <Requests />}
     </>
