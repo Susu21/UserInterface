@@ -103,7 +103,9 @@ const Feed = props => {
         </View>
         {/* {!props.hideCd && ( */}
         {/* )} */}
-        {conditionSel == 'New' && (
+        {(conditionSel == 'New' ||
+          conditionSel == 'Used' ||
+          conditionSel == 'Not Specified') && (
           <View>
             <View>
               <Text style={styles.PriceRange}>Price Range</Text>
