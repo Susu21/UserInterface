@@ -1,8 +1,7 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, Text} from 'react-native';
 import Feed from '../component/Feed';
 import Header from '../component/Header';
-import PRange from '../component/PriceRange';
 const Home = props => {
   return (
     <SafeAreaView style={styles.safearea}>
@@ -11,7 +10,7 @@ const Home = props => {
         <Text style={styles.userName}>Ronda Rhousey</Text>
         <Text style={styles.Role}>Product Designer</Text>
         <Text style={styles.SysName}>@iamronda</Text>
-        <Feed style={styles.container} title={Feed} />
+        <Feed style={styles.container} />
         {/* <PRange style={styles.container} title={PRange} /> */}
       </ScrollView>
     </SafeAreaView>

@@ -5,7 +5,8 @@ import Home from '../screens/Home';
 
 const Stack = createNativeStackNavigator();
 
-const MyStack = () => {
+const MyStack = props => {
+  console.log('props.timer', props.timer);
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={Home} />

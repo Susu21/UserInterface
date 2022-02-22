@@ -15,7 +15,7 @@ import RailSelected from './RailSelected';
 import Thumb from './Thumbs';
 import {useNavigation} from '@react-navigation/native';
 
-const Feed = props => {
+const FilterSearch = props => {
   const [isSelected, setIsSelected] = useState([]);
 
   const navigation = useNavigation();
@@ -335,7 +335,7 @@ const Feed = props => {
   );
 };
 
-export default Feed;
+export default FilterSearch;
 
 const styles = StyleSheet.create({
   container: {

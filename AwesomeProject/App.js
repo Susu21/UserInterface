@@ -14,8 +14,6 @@ LogBox.ignoreLogs([
 // };
 
 const Home1 = () => {
-  const [state, setState] = useState('');
-
   return (
     <NavigationContainer>
       <MyStack />

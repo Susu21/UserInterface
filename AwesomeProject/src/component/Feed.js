@@ -6,6 +6,8 @@ import About from './About';
 const Feed = props => {
   const [state, setState] = useState();
   const [isSelected, setIsSelected] = useState([]);
+  const [timer, setTimer] = useState(60000);
+
   return (
     <>
       <View style={styles.SubMenu}>
@@ -38,7 +40,9 @@ const Feed = props => {
         </TouchableOpacity>
       </View>
       {state == 'Feed' && <FilterSearch setState={setState} hideShow={false} />}
-      {state == 'About' && <About />}
+      {state == 'About' && (
+        <About setState={setState} timer={timer} setTimer={setTimer} />
+      )}
       {state == 'Request' && <Requests />}
     </>
   );

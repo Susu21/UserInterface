@@ -11,7 +11,7 @@ const Header = props => {
         <Image
           style={styles.profilePic}
           source={{
-            uri: 'https://www.whatsappprofiledpimages.com/wp-content/uploads/2021/08/Profile-Photo-Wallpaper.jpg',
+            uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVLqfekg_kitC_QJ5kgBUTh2tt5EIcxEnQDQ&usqp=CAU',
           }}
         />
       </TouchableOpacity>
