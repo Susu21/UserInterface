@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {
   FlatList,
@@ -167,6 +167,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 207,
     width: 343,
+
     justifyContent: 'center',
   },
   imageSneacker: {
