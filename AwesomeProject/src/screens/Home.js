@@ -1,50 +1,27 @@
-import React, {useRef} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import RNJsxParser from 'react-native-jsx-parser';
-import Feed from '../component/Feed';
+import {useNavigation} from '@react-navigation/native';
+import React, {useCallback, useState} from 'react';
+import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import FilterSearch from '../component/FilterSearch';
 import Header from '../component/Header';
-const Home = () => {
-  const Views =
-    "<View>      <TouchableOpacity onPress={() => navigation.navigate('OnPressFeed')}>        <Image          style={styles.profilePic}          source={{            uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVLqfekg_kitC_QJ5kgBUTh2tt5EIcxEnQDQ&usqp=CAU',          }}        />      </TouchableOpacity>      <Header style={styles.container}>Header</Header>      <Text style={styles.title}>Profile</Text>      <Text style={styles.userName}>Ronda Rhousey</Text>      <Text style={styles.Role}>Product Designer</Text>      <Text style={styles.SysName}>@iamronda</Text>      <Feed style={styles.container} />    </View>";
-  console.log('View', Views.toString());
+import About from '../component/About';
+import HeaderMenu from '../component/HeaderMenu';
+import FoodMenu from '../component/FoodMenu';
+const OnPressFeed = props => {
   return (
-    <>
-      <RNJsxParser
-        // bindings={bindings}
-        components={Home}
-        renderInWrapper={false}
-        jsx={Views}
-      />
-    </>
+    <SafeAreaView style={styles.safearea}>
+      <ScrollView>
+        <View>
+          <HeaderMenu></HeaderMenu>
+        </View>
+        <View>
+          <About style={styles.container} />
+          <FoodMenu style={styles.container} />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
-  // const Asdada = {Views};
-
-  // const stringJsx = '<><Views></>';
-  // <RNJsxParser bindings={Views} components={Home} jsx={String} />;
-
-  //   return (
-  //     <SafeAreaView style={styles.safearea}>
-  //       <ScrollView>
-  //         <View>
-  //           <Text>{Views}</Text>
-  //         </View>
-
-  //         {/* <Header style={styles.container} title={Header} /> */}
-  //         {/* <PRange style={styles.container} title={PRange} /> */}
-  //       </ScrollView>
-  //     </SafeAreaView>
-  //   );
 };
-export default Home;
-
+export default OnPressFeed;
 const styles = StyleSheet.create({
   container: {
     width: 375,
@@ -126,3 +103,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 });
+{
+  /* <SafeAreaView style={styles.safearea}> */
+}
+{
+  /* <ScrollView>
+          <Header style={styles.container} title={Header} />
+          <Text style={styles.userName}>Ronda Rhousey</Text>
+          <Text style={styles.Role}>Product Designer</Text>
+          <Text style={styles.SysName}>@iamronda</Text>
+          <Feed style={styles.container} title={Feed} />
+        </ScrollView> */
+}
+{
+  /* </SafeAreaView> */
+}

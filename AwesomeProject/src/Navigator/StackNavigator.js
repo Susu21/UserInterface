@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 import onPressTest from '../screens/OnPressTest';
 import Test from '../component/Test';
+import FoodMenu from '../component/FoodMenu';
 const Stack = createNativeStackNavigator();
 
 const MyStack = props => {
@@ -14,8 +15,8 @@ const MyStack = props => {
       screenOptions={{headerShown: false}}>
       <Stack.Screen
         name="Home"
-        component={Home}
-        options={{headerShown: true}}
+        component={FoodMenu}
+        options={{headerShown: false}}
       />
       <Stack.Screen name="OnPressFeed" component={OnPressFeed} />
       {/* <Stack.Screen

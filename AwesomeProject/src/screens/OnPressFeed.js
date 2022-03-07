@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
   container: {
     width: 400,
     height: 180,
-
     backgroundColor: 'white',
   },
   safearea: {

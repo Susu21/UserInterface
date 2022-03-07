@@ -28,6 +28,8 @@
 		A4921BF6CDE7442D9FBF62EC /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DEF2CCB508D42ACB8FBD0A6 /* Octicons.ttf */; };
 		62E7E776431949819B63F0B8 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A41C780F4C24A099C975F2D /* SimpleLineIcons.ttf */; };
 		DF35FAA3E59B4CD68B650653 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30FB450534BB433780388B8E /* Zocial.ttf */; };
+		C419A39556C141E7AD7028E2 /* SfFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 072245414E4F4ADEB05A7096 /* SfFont.ttf */; };
+		475202EADCC24FB09AC11CCA /* LeagueGothic-Regular-VariableFont_wdth.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E718499A602447149034E0D4 /* LeagueGothic-Regular-VariableFont_wdth.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		1DEF2CCB508D42ACB8FBD0A6 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		1A41C780F4C24A099C975F2D /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		30FB450534BB433780388B8E /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		072245414E4F4ADEB05A7096 /* SfFont.ttf */ = {isa = PBXFileReference; name = "SfFont.ttf"; path = "../assets/fonts/SfFont.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E718499A602447149034E0D4 /* LeagueGothic-Regular-VariableFont_wdth.ttf */ = {isa = PBXFileReference; name = "LeagueGothic-Regular-VariableFont_wdth.ttf"; path = "../assets/fonts/LeagueGothic-Regular-VariableFont_wdth.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,8 @@
 				1DEF2CCB508D42ACB8FBD0A6 /* Octicons.ttf */,
 				1A41C780F4C24A099C975F2D /* SimpleLineIcons.ttf */,
 				30FB450534BB433780388B8E /* Zocial.ttf */,
+				072245414E4F4ADEB05A7096 /* SfFont.ttf */,
+				E718499A602447149034E0D4 /* LeagueGothic-Regular-VariableFont_wdth.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -287,6 +293,8 @@
 				A4921BF6CDE7442D9FBF62EC /* Octicons.ttf in Resources */,
 				62E7E776431949819B63F0B8 /* SimpleLineIcons.ttf in Resources */,
 				DF35FAA3E59B4CD68B650653 /* Zocial.ttf in Resources */,
+				C419A39556C141E7AD7028E2 /* SfFont.ttf in Resources */,
+				475202EADCC24FB09AC11CCA /* LeagueGothic-Regular-VariableFont_wdth.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
