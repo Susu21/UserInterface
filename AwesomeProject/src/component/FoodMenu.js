@@ -28,7 +28,9 @@ const FoodMenu = props => {
         <Text
           style={{
             alignSelf: 'center',
-
+            marginTop: 20,
+            fontSize: 17,
+            lineHeight: 20.29,
             color: '#FA4A0C',
             fontWeight: 'bold',
           }}>
@@ -71,21 +73,23 @@ const FoodMenu = props => {
 
   return (
     <View>
-      <Text style={styles.Headertext}>Found 6 results</Text>
       <View>
-        <FlatList
-          contentContainerStyle={{
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            width: '95%',
-            paddingBottom: 50,
-            marginLeft: '2.5%',
-            justifyContent: 'center',
-          }}
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-        />
+        <Text style={styles.Headertext}>Found 6 results</Text>
+        <View>
+          <FlatList
+            contentContainerStyle={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              width: '95%',
+              paddingBottom: 50,
+              marginLeft: '2.5%',
+              justifyContent: 'center',
+            }}
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+          />
+        </View>
       </View>
     </View>
   );
@@ -95,10 +99,10 @@ export default FoodMenu;
 
 const styles = StyleSheet.create({
   ImageFrame: {
-    width: 128,
-    height: 170.41,
-    marginHorizontal: 20,
-
+    width: 150,
+    height: 212.41,
+    marginTop: 15,
+    marginHorizontal: 15,
     borderRadius: 30,
     backgroundColor: 'white',
     shadowColor: '#000',
@@ -112,10 +116,10 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   ImageFrame2: {
-    width: 128,
-    height: 170.41,
-    marginHorizontal: 20,
-    marginTop: 33,
+    width: 150,
+    height: 212.41,
+    marginTop: 50,
+    marginHorizontal: 15,
     borderRadius: 30,
     backgroundColor: 'white',
     shadowColor: '#000',
@@ -129,10 +133,10 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   ImageFrame3: {
-    width: 128,
-    height: 170.41,
-    marginHorizontal: 20,
+    width: 150,
+    height: 212.41,
     marginTop: 60,
+    marginHorizontal: 15,
     marginBottom: 10,
     borderRadius: 30,
     backgroundColor: 'white',
@@ -147,10 +151,10 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   ImageFrame4: {
-    width: 128,
-    height: 170.41,
-    marginHorizontal: 20,
+    width: 150,
+    height: 212.41,
     marginTop: 100,
+    marginHorizontal: 15,
     marginBottom: 10,
     borderRadius: 30,
     backgroundColor: 'white',
@@ -166,9 +170,9 @@ const styles = StyleSheet.create({
   },
 
   imageSneacker: {
-    height: 100,
-    width: 100,
-    marginTop: -30,
+    height: 124.98,
+    width: 124.98,
+    marginTop: -40,
     borderRadius: 70,
     alignSelf: 'center',
   },
@@ -180,7 +184,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   title: {
-    fontSize: 14,
+    fontSize: 20,
     fontFamily: 'LeagueGothic-Regular-VariableFont_wdth',
     textAlign: 'center',
     fontWeight: 'bold',
@@ -194,5 +198,17 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     marginTop: 70,
+  },
+  MultipleBtn: {
+    width: 100,
+    height: 30,
+    borderRadius: 29,
+
+    backgroundColor: 'black',
+  },
+  MultipleBtnTxt: {
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    color: 'white',
   },
 });

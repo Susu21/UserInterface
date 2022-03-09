@@ -3,6 +3,7 @@ import React, {useCallback, useState} from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import FilterSearch from '../component/FilterSearch';
 import Header from '../component/Header';
+import HeaderMenu from '../component/HeaderMenu';
 
 const OnPressFeed = props => {
   return (

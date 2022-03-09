@@ -6,16 +6,13 @@ import Header from '../component/Header';
 import About from '../component/About';
 import HeaderMenu from '../component/HeaderMenu';
 import FoodMenu from '../component/FoodMenu';
+import Gadgets from '../component/Gadgets';
 const OnPressFeed = props => {
   return (
     <SafeAreaView style={styles.safearea}>
       <ScrollView>
         <View>
-          <HeaderMenu></HeaderMenu>
-        </View>
-        <View>
-          <About style={styles.container} />
-          <FoodMenu style={styles.container} />
+          <HeaderMenu style={styles.container} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -27,6 +24,7 @@ const styles = StyleSheet.create({
     width: 375,
     height: 90,
     marginTop: 10,
+
     backgroundColor: '#ffffff',
   },
   safearea: {

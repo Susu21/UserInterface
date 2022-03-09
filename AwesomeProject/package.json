@@ -15,6 +15,7 @@
     "@fortawesome/react-fontawesome": "^0.1.17",
     "@react-native-community/slider": "^4.2.0",
     "@react-native-masked-view/masked-view": "^0.2.6",
+    "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/native-stack": "^6.5.0",
     "@react-navigation/stack": "^6.1.1",
     "moment": "^2.29.1",
@@ -53,6 +54,8 @@
     "preset": "react-native"
   },
   "rnpm": {
-    "assets": ["./assets/fonts"]
+    "assets": [
+      "./assets/fonts"
+    ]
   }
 }
