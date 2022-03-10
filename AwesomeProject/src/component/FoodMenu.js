@@ -1,15 +1,23 @@
+import React, {useEffect} from 'react';
 import {
   FlatList,
   Image,
-  ImageBackground,
+  LogBox,
+  ScrollView,
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
+  Dimensions,
 } from 'react-native';
-import React from 'react';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const FoodMenu = props => {
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  }, []);
   const Items = ({item, index}) => {
     console.log('index % 2 == 1', index);
     return (
@@ -73,24 +81,23 @@ const FoodMenu = props => {
 
   return (
     <View>
-      <View>
-        <Text style={styles.Headertext}>Found 6 results</Text>
-        <View>
-          <FlatList
-            contentContainerStyle={{
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              width: '95%',
-              paddingBottom: 50,
-              marginLeft: '2.5%',
-              justifyContent: 'center',
-            }}
-            data={data}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-          />
-        </View>
-      </View>
+      <Text style={styles.Headertext}>Found 6 results</Text>
+      <ScrollView>
+        <FlatList
+          contentContainerStyle={{
+            width: wp('100%'),
+            height: hp('80%'),
+            padding: '30%',
+            // marginLeft: '5%',
+
+            justifyContent: 'center',
+          }}
+          numColumns={2}
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+        />
+      </ScrollView>
     </View>
   );
 };
@@ -99,9 +106,9 @@ export default FoodMenu;
 
 const styles = StyleSheet.create({
   ImageFrame: {
-    width: 150,
+    width: 145,
     height: 212.41,
-    marginTop: 15,
+    marginTop: 10,
     marginHorizontal: 15,
     borderRadius: 30,
     backgroundColor: 'white',
@@ -116,7 +123,7 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   ImageFrame2: {
-    width: 150,
+    width: 145,
     height: 212.41,
     marginTop: 50,
     marginHorizontal: 15,
@@ -133,7 +140,7 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   ImageFrame3: {
-    width: 150,
+    width: 145,
     height: 212.41,
     marginTop: 60,
     marginHorizontal: 15,
@@ -151,7 +158,7 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   ImageFrame4: {
-    width: 150,
+    width: 145,
     height: 212.41,
     marginTop: 100,
     marginHorizontal: 15,
@@ -197,7 +204,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     textAlign: 'center',
-    marginTop: 70,
   },
   MultipleBtn: {
     width: 100,

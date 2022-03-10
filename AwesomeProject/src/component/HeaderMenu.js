@@ -8,13 +8,22 @@ const HeaderMenu = () => {
   const [state, setState] = useState('About');
   return (
     <View>
-      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+
+          marginVertical: 30,
+        }}>
         <TouchableOpacity
           style={state == 'About' ? styles.SubMenuHover1 : styles.SubMenuText}
           onPress={() => {
             setState('About');
           }}>
-          <Text style={state == 'About' ? styles.SubMenuTextReq : null}>
+          <Text
+            style={
+              state == 'About' ? styles.SubMenuTextReq : styles.SubMenuTextReq1
+            }>
             About
           </Text>
         </TouchableOpacity>
@@ -25,7 +34,12 @@ const HeaderMenu = () => {
           onPress={() => {
             setState('FoodMenu');
           }}>
-          <Text style={state == 'FoodMenu' ? styles.SubMenuTextReq : null}>
+          <Text
+            style={
+              state == 'FoodMenu'
+                ? styles.SubMenuTextReq
+                : styles.SubMenuTextReq1
+            }>
             Food Menu
           </Text>
         </TouchableOpacity>
@@ -34,7 +48,12 @@ const HeaderMenu = () => {
           onPress={() => {
             setState('Gadgets');
           }}>
-          <Text style={state == 'Gadgets' ? styles.SubMenuTextReq : null}>
+          <Text
+            style={
+              state == 'Gadgets'
+                ? styles.SubMenuTextReq
+                : styles.SubMenuTextReq1
+            }>
             Gadgets
           </Text>
         </TouchableOpacity>
@@ -121,12 +140,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
+    backgroundColor: 'black',
   },
   SubMenuTextReq: {
     height: 20,
     fontSize: 13,
     lineHeight: 18,
-    color: '#1778F2',
+    color: '#EEEE9B',
     fontWeight: 'bold',
+  },
+  SubMenuTextReq1: {
+    height: 20,
+    fontSize: 13,
+    lineHeight: 18,
+    color: 'white',
   },
 });

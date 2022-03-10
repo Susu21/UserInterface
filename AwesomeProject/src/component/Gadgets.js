@@ -103,15 +103,15 @@ const Gadgets = props => {
         <View>
           <FlatList
             contentContainerStyle={{
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              width: '100%',
-              paddingBottom: 50,
+              width: '90%',
 
-              justifyContent: 'center',
+              paddingBottom: 50,
+              alignItems: 'center',
+              alignSelf: 'center',
               backgroundColor: '#F3F3F3',
               borderRadius: 20,
             }}
+            numColumns={2}
             data={data}
             renderItem={renderItem}
             keyExtractor={item => item.id}
@@ -174,10 +174,8 @@ const styles = StyleSheet.create({
   ImageFrame4: {
     width: 165,
     height: 250,
-    marginHorizontal: 10,
-
-    marginTop: 25,
-    marginBottom: -10,
+    marginLeft: 21,
+    marginTop: 15,
     borderRadius: 15,
     backgroundColor: 'white',
   },

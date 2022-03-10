@@ -1,13 +1,5 @@
-import {
-  Image,
-  ScrollView,
-  ScrollViewComponent,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-} from 'react-native';
 import React from 'react';
+import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 const Requests = props => {
   const Item = ({item}) => {
     return (

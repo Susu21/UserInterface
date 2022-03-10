@@ -1,4 +1,6 @@
-import React, {useCallback, useEffect, useState, useContext} from 'react';
+import Slider from '@react-native-community/slider';
+import {useNavigation} from '@react-navigation/native';
+import React, {useCallback, useState} from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -7,13 +9,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Slider from '@react-native-community/slider';
-import Label from './Label';
-import Notch from './Notch';
-import Rail from './Rail';
-import RailSelected from './RailSelected';
-import Thumb from './Thumbs';
-import {useNavigation} from '@react-navigation/native';
+import Label from '../slider/Label';
+import Notch from '../slider/Notch';
+import Rail from '../slider/Rail';
+import RailSelected from '../slider/RailSelected';
+import Thumb from '../slider/Thumbs';
 
 const FilterSearch = props => {
   const [isSelected, setIsSelected] = useState([]);

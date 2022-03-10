@@ -1,18 +1,27 @@
 import React, {useEffect, useState} from 'react';
-
 import {
+  Dimensions,
   FlatList,
   Image,
   ImageBackground,
+  LogBox,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import Timer from './Timer';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const About = props => {
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get('window').height;
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  }, []);
   const [defaultRating, setDefaultRating] = useState(4);
   // To set the max number of Stars
   const maxRating = [1, 2, 3, 4, 5];
@@ -117,29 +126,27 @@ const About = props => {
   ];
 
   return (
-    <View>
+    <ScrollView>
       <ImageBackground
         style={styles.Header}
         source={{
           uri: 'https://c0.wallpaperflare.com/preview/28/600/957/pair-of-black-white-and-red-air-jordan-1-shoes.jpg',
         }}>
         <Text style={styles.HeaderText}>Super Flash Sale 50% Off</Text>
-        <Timer until={props.timer} setTimer={props.setTimer} />
       </ImageBackground>
       <FlatList
-        style={{}}
         contentContainerStyle={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          width: '90%',
-          marginLeft: '5%',
+          width: '95%',
+          marginLeft: '2.5%',
+
           justifyContent: 'center',
         }}
+        numColumns={2}
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-    </View>
+    </ScrollView>
   );
 };
 
@@ -147,10 +154,10 @@ export default About;
 
 const styles = StyleSheet.create({
   Header: {
-    width: 343,
-    height: 206,
-    marginTop: 15,
-    marginLeft: 25,
+    width: wp('93.5%'),
+    height: hp('30%'),
+    marginLeft: '3.2%',
+
     borderRadius: 5,
   },
   title: {
@@ -163,19 +170,14 @@ const styles = StyleSheet.create({
     color: '#40BFFF',
     fontWeight: 'bold',
   },
-  image: {
-    flex: 1,
-    height: 207,
-    width: 343,
 
-    justifyContent: 'center',
-  },
   imageSneacker: {
     height: 133,
     width: 133,
     alignSelf: 'center',
     marginTop: 16,
     justifyContent: 'center',
+    flex: 1,
   },
   HeaderText: {
     width: 209,
@@ -188,45 +190,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
-  HeaderClockHour: {
-    height: 41,
-    marginLeft: 15,
-    marginBottom: 35,
-    borderRadius: 5,
 
-    flexDirection: 'row',
-  },
-  HeaderClockMin: {
-    width: 42,
-    height: 41,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 5,
-    backgroundColor: 'white',
-  },
-
-  HeaderClockHourTxt: {
-    fontWeight: 'bold',
-    color: '#223263',
-  },
-
-  HeaderClockMinTxt: {
-    height: 42,
-    width: 40,
-    marginTop: 10,
-    marginLeft: 13,
-    borderRadius: 5,
-    fontWeight: 'bold',
-    color: '#223263',
-    backgroundColor: '',
-  },
-  HourMinBetween: {
-    height: 40,
-    marginTop: 10,
-    marginHorizontal: 3,
-    fontSize: 14,
-    color: 'white',
-  },
   BotContainer: {
     width: 165,
     height: 282,
@@ -235,36 +199,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#EBF0FF',
     margin: 5,
+    flex: 1,
   },
-  titleText: {
-    padding: 8,
-    fontSize: 16,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  textStyle: {
-    textAlign: 'center',
-    fontSize: 23,
-    color: '#000',
-    marginTop: 15,
-  },
-  textStyleSmall: {
-    textAlign: 'center',
-    fontSize: 16,
-    color: '#000',
-    marginTop: 15,
-  },
-  buttonStyle: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    marginTop: 30,
-    padding: 15,
-    backgroundColor: '#8ad24e',
-  },
-  buttonTextStyle: {
-    color: '#fff',
-    textAlign: 'center',
-  },
+
   customRatingBarStyle: {
     justifyContent: 'flex-start',
     flexDirection: 'row',
@@ -280,182 +217,6 @@ const styles = StyleSheet.create({
     marginLeft: 75,
     marginTop: -45,
     color: '#FB7181',
+    fontWeight: 'bold',
   },
 });
-{
-  /* <View style={styles.Header}>
-          <ImageBackground
-            source={image}
-            resizeMode="cover"
-            borderRadius={5}
-            style={styles.image}>
-            <Text style={styles.HeaderText}>Super Flash Sale 50% Off</Text>
-          </ImageBackground> */
-}
-{
-  /* <View>
-            <View style={styles.HeaderClockHour}>
-              <View style={styles.HeaderClockMin}>
-                <Text style={styles.HeaderClockHourTxt}>08</Text>
-              </View>
-              <View>
-                <Text style={styles.HourMinBetween}>:</Text>
-              </View>
-              <View style={styles.HeaderClockMin}>
-                <Text style={styles.HeaderClockHourTxt}>34</Text>
-              </View>
-              <View>
-                <Text style={styles.HourMinBetween}>:</Text>
-              </View>
-              <View style={styles.HeaderClockMin}>
-                <Text style={styles.HeaderClockHourTxt}>15</Text>
-              </View>
-            </View>
-          </View> */
-}
-{
-  /* </View> */
-}
-{
-  /* <View
-          style={{
-            flexDirection: 'row',
-            marginTop: 10,
-
-            paddingHorizontal: 25,
-            justifyContent: 'space-around',
-          }}>
-          <TouchableOpacity>
-            <View style={styles.BotContainer}>
-              <ImageBackground
-                source={imageSneacker}
-                style={styles.imageSneacker}
-                resizeMode={'cover'}></ImageBackground>
-              <View
-                style={{
-                  width: 133,
-                  height: 36,
-                  marginTop: 6,
-                  marginLeft: 16,
-                }}>
-                <Text
-                  style={{color: '#223263', fontSize: 14, fontWeight: 'bold'}}>
-                  Nike Air Max 270 React ENG
-                </Text>
-                <CustomRatingBar
-                  defaultRating={defaultRating}
-                  setDefaultRating={setDefaultRating}
-                />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <View style={styles.BotContainer}>
-            <ImageBackground
-              source={imageSneacker}
-              style={styles.imageSneacker}
-              resizeMode={'cover'}></ImageBackground>
-            <View
-              style={{
-                width: 133,
-                height: 36,
-                marginTop: 6,
-                marginLeft: 16,
-              }}>
-              <Text
-                style={{color: '#223263', fontSize: 14, fontWeight: 'bold'}}>
-                Nike Air Max 270 React ENG
-              </Text>
-              <CustomRatingBar
-                defaultRating={defaultRating1}
-                setDefaultRating={setDefaultRating1}
-              />
-            </View>
-          </View>
-        </View> */
-}
-// return (
-//   <ScrollView>
-//     <View style={styles.Header}>
-//       <ImageBackground
-//         source={image}
-//         resizeMode="cover"
-//         borderRadius={5}
-//         style={styles.image}>
-//         <Text style={styles.HeaderText}>Super Flash Sale 50% Off</Text>
-//       </ImageBackground>
-//       <View>
-//         <View style={styles.HeaderClockHour}>
-//           <View style={styles.HeaderClockMin}>
-//             <Text style={styles.HeaderClockHourTxt}>08</Text>
-//           </View>
-//           <View>
-//             <Text style={styles.HourMinBetween}>:</Text>
-//           </View>
-//           <View style={styles.HeaderClockMin}>
-//             <Text style={styles.HeaderClockHourTxt}>34</Text>
-//           </View>
-//           <View>
-//             <Text style={styles.HourMinBetween}>:</Text>
-//           </View>
-//           <View style={styles.HeaderClockMin}>
-//             <Text style={styles.HeaderClockHourTxt}>15</Text>
-//           </View>
-//         </View>
-//       </View>
-//     </View>
-//     <View
-//       style={{
-//         flexDirection: 'row',
-//         marginTop: 10,
-
-//         paddingHorizontal: 25,
-//         justifyContent: 'space-around',
-//       }}>
-//       <TouchableOpacity>
-//         <View style={styles.BotContainer}>
-//           <ImageBackground
-//             source={imageSneacker}
-//             style={styles.imageSneacker}
-//             resizeMode={'cover'}></ImageBackground>
-//           <View
-//             style={{
-//               width: 133,
-//               height: 36,
-//               marginTop: 6,
-//               marginLeft: 16,
-//             }}>
-//             <Text
-//               style={{color: '#223263', fontSize: 14, fontWeight: 'bold'}}>
-//               Nike Air Max 270 React ENG
-//             </Text>
-//             <CustomRatingBar
-//               defaultRating={defaultRating}
-//               setDefaultRating={setDefaultRating}
-//             />
-//           </View>
-//         </View>
-//       </TouchableOpacity>
-//       <View style={styles.BotContainer}>
-//         <ImageBackground
-//           source={imageSneacker}
-//           style={styles.imageSneacker}
-//           resizeMode={'cover'}></ImageBackground>
-//         <View
-//           style={{
-//             width: 133,
-//             height: 36,
-//             marginTop: 6,
-//             marginLeft: 16,
-//           }}>
-//           <Text style={{color: '#223263', fontSize: 14, fontWeight: 'bold'}}>
-//             Nike Air Max 270 React ENG
-//           </Text>
-//           <CustomRatingBar
-//             defaultRating={defaultRating1}
-//             setDefaultRating={setDefaultRating1}
-//           />
-//         </View>
-//       </View>
-//     </View>
-//   </ScrollView>
-// );

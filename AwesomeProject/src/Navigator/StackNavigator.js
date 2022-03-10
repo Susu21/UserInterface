@@ -6,7 +6,7 @@ import onPressTest from '../screens/OnPressTest';
 import Test from '../component/Test';
 import FoodMenu from '../component/FoodMenu';
 import Gadgets from '../component/Gadgets';
-import BottomNavigator from '../Navigator/BottomNavigator';
+import BottomNavigator from './BottomNavigator';
 const Stack = createNativeStackNavigator();
 
 const MyStack = props => {

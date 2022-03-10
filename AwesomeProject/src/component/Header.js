@@ -7,14 +7,13 @@ const Header = props => {
 
   return (
     <View>
-      <TouchableOpacity onPress={() => navigation.navigate('OnPressFeed')}>
-        <Image
-          style={styles.profilePic}
-          source={{
-            uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVLqfekg_kitC_QJ5kgBUTh2tt5EIcxEnQDQ&usqp=CAU',
-          }}
-        />
-      </TouchableOpacity>
+      <Image
+        style={styles.profilePic}
+        source={{
+          uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVLqfekg_kitC_QJ5kgBUTh2tt5EIcxEnQDQ&usqp=CAU',
+        }}
+      />
+
       <Text style={styles.title}>Profile</Text>
     </View>
   );

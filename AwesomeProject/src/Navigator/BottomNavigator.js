@@ -12,13 +12,16 @@ function BottomNavigator() {
       <Tab.Screen
         name="Home"
         component={Home}
-        options={{
-          headerShown: false,
-          tabBarShowLabel: true,
-          tabBarHideOnKeyboard: true,
-          tabBarActiveTintColor: 'grey',
-          tabBarInactiveTintColor: '#585858',
-        }}
+        options={
+          {
+            // headerShown: false,
+            // tabBarShowLabel: true,
+            // tabBarHideOnKeyboard: true,
+            // tabBarActiveTintColor: 'grey',
+            // tabBarInactiveTintColor: '#585858',
+            // tabBarIcon: '',
+          }
+        }
       />
       <Tab.Screen
         name="OnPressFeed"
