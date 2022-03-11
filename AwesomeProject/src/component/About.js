@@ -32,7 +32,7 @@ const About = props => {
     'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_corner.png';
   const CustomRatingBar = props => {
     const [selectedRate, setSelectedRate] = useState(1);
-    console.log('defaultRating', defaultRating);
+    // console.log('defaultRating', d÷ßefaultRating);
     return (
       <View style={styles.customRatingBarStyle}>
         {maxRating.map((item, key) => {
@@ -154,9 +154,9 @@ export default About;
 
 const styles = StyleSheet.create({
   Header: {
-    width: wp('93.5%'),
+    width: wp('92%'),
     height: hp('30%'),
-    marginLeft: '3.2%',
+    marginLeft: '3.9%',
 
     borderRadius: 5,
   },
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   },
 
   imageSneacker: {
-    height: 133,
+    height: 250,
     width: 133,
     alignSelf: 'center',
     marginTop: 16,

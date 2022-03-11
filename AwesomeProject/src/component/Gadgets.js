@@ -6,13 +6,14 @@ import {
   FlatList,
   Image,
 } from 'react-native';
+
 import React, {useState} from 'react';
 
 const Gadgets = props => {
   const [conditionSel, setConditionSel] = useState();
   const [state, setState] = useState();
   const Items = ({item, index}) => {
-    console.log('index % 2 == 1', index);
+    // console.log('index % 2 == 1', index);
     return (
       <View style={styles.ImageFrame4}>
         <Image style={styles.imageTomato} source={{uri: item.imageTomato}} />
@@ -26,12 +27,12 @@ const Gadgets = props => {
           }}>
           {item.RetailPrice}
         </Text>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row', backgroundColor: 'white'}}>
           <Image
             style={{
-              width: 15,
-              height: 15,
-              marginTop: 12,
+              height: Platform.OS === 'android' ? '52%' : '5%',
+              width: Platform.OS === 'android' ? '12%' : '5%',
+              marginTop: '0.5%',
               marginLeft: 5,
               marginHorizontal: 5,
             }}
@@ -39,12 +40,24 @@ const Gadgets = props => {
               uri: 'https://tevispropane.com/wp-content/uploads/2016/11/Review-star.png',
             }}
           />
-          <Text style={{color: 'black', marginTop: 10}}>{item.Ratings}</Text>
-          <Text style={{marginLeft: 9, marginTop: 10, color: 'black'}}>
+          <Text
+            style={{
+              color: 'black',
+              height: Platform.OS === 'android' ? '75%' : '10%',
+              width: Platform.OS === 'android' ? '15%' : '10%',
+            }}>
+            {item.Ratings}
+          </Text>
+          <Text
+            style={{
+              height: Platform.OS === 'android' ? '75%' : '10%',
+              width: Platform.OS === 'android' ? '52%' : '10%',
+              marginLeft: '4%',
+            }}>
             {item.Reviews + ' Reviews'}
           </Text>
           <Image
-            style={{width: 22, height: 22, marginLeft: 15, marginTop: 10}}
+            style={{width: 22, height: 22, marginRight: '3%', marginTop: 2}}
             source={{
               uri: 'https://cdn3.iconfinder.com/data/icons/basic-user-interface-5/64/dots_dot_dot-menu_option_nav_navigation_main-512.png',
             }}
@@ -99,11 +112,12 @@ const Gadgets = props => {
         <Text style={styles.HeaderTextTxt}>Headphone</Text>
         <Text style={styles.HeaderTextTxt1}>TMA Wireless</Text>
       </View>
-      <View>
+      <View style={{backgroundColor: 'white'}}>
         <View>
           <FlatList
             contentContainerStyle={{
-              width: '90%',
+              height: Platform.OS === 'android' ? '100%' : '10%',
+              width: Platform.OS === 'android' ? '95%' : '10%',
 
               paddingBottom: 50,
               alignItems: 'center',
@@ -141,30 +155,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
   },
-  Menu: {
-    flexDirection: 'row',
-    marginLeft: 40,
-  },
-  MenuText: {
-    textAlign: 'center',
-    marginTop: 10,
-    color: 'black',
-  },
-  SelectedBtn: {
-    width: 92,
-    height: 41,
-    borderRadius: 10,
-    marginLeft: 13,
-    marginTop: 10,
-    borderWidth: 1,
-    borderColor: '#BABABA',
-  },
-  Button1: {
-    width: 92,
-    height: 41,
-    marginTop: 10,
-    marginLeft: 15,
-  },
   imageTomato: {
     width: 100,
     height: 100,
@@ -172,10 +162,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   ImageFrame4: {
-    width: 165,
-    height: 250,
-    marginLeft: 21,
+    height: Platform.OS === 'android' ? '95%' : '10%',
+    width: Platform.OS === 'android' ? '45%' : '10%',
+    marginLeft: '2%',
     marginTop: 15,
+    marginRight: 10,
     borderRadius: 15,
     backgroundColor: 'white',
   },
@@ -185,5 +176,6 @@ const styles = StyleSheet.create({
     marginTop: 35,
     letterSpacing: 0.2,
     color: 'black',
+    backgroundColor: 'white',
   },
 });

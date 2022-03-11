@@ -8,6 +8,7 @@ import {
   Text,
   View,
   Dimensions,
+  Platform,
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -19,18 +20,9 @@ const FoodMenu = props => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
   }, []);
   const Items = ({item, index}) => {
-    console.log('index % 2 == 1', index);
+    // console.log('index % 2 == 1', index);
     return (
-      <View
-        style={
-          index == 1
-            ? styles.ImageFrame4
-            : index == 0
-            ? styles.ImageFrame3
-            : index % 3 == 0
-            ? styles.ImageFrame2
-            : styles.ImageFrame
-        }>
+      <View style={index % 2 == 1 ? styles.ImageFrame3 : styles.ImageFrame4}>
         <Image style={styles.imageSneacker} source={{uri: item.imageTomato}} />
         <Text style={styles.title}>{item.title}</Text>
         <Text
@@ -80,17 +72,21 @@ const FoodMenu = props => {
   ];
 
   return (
-    <View>
+    <View style={{flex: 1, paddingBottom: '15%'}}>
       <Text style={styles.Headertext}>Found 6 results</Text>
       <ScrollView>
         <FlatList
           contentContainerStyle={{
-            width: wp('100%'),
-            height: hp('80%'),
-            padding: '30%',
-            // marginLeft: '5%',
+            width: '100%',
+            height: '100%',
+            paddingHorizontal: '5%',
 
-            justifyContent: 'center',
+            paddingBottom: '20%',
+            backgroundColor: 'white',
+            alignSelf: 'center',
+            // height: hp('80%'),
+            // padding: '30%',
+            // marginLeft: '5%',
           }}
           numColumns={2}
           data={data}
@@ -105,48 +101,50 @@ const FoodMenu = props => {
 export default FoodMenu;
 
 const styles = StyleSheet.create({
-  ImageFrame: {
-    width: 145,
-    height: 212.41,
-    marginTop: 10,
-    marginHorizontal: 15,
-    borderRadius: 30,
-    backgroundColor: 'white',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
+  // ImageFrame: {
+  //   width: '45%',
+  //   height: '80%',
+  //   marginTop: '20%',
 
-    elevation: 12,
-  },
-  ImageFrame2: {
-    width: 145,
-    height: 212.41,
-    marginTop: 50,
-    marginHorizontal: 15,
-    borderRadius: 30,
-    backgroundColor: 'white',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
+  //   borderRadius: 30,
+  //   backgroundColor: 'white',
+  //   shadowColor: '#000',
+  //   shadowOffset: {
+  //     width: 0,
+  //     height: 6,
+  //   },
+  //   shadowOpacity: 0.37,
+  //   shadowRadius: 7.49,
 
-    elevation: 12,
-  },
+  //   elevation: 12,
+  // },
+  // ImageFrame2: {
+  //   width: '45%',
+  //   height: '68%',
+  //   marginTop: '23%',
+
+  //   borderRadius: 30,
+  //   backgroundColor: 'white',
+  //   shadowColor: '#000',
+  //   shadowOffset: {
+  //     width: 0,
+  //     height: 6,
+  //   },
+  //   shadowOpacity: 0.37,
+  //   shadowRadius: 7.49,
+
+  //   elevation: 12,
+  // },
   ImageFrame3: {
-    width: 145,
-    height: 212.41,
-    marginTop: 60,
-    marginHorizontal: 15,
-    marginBottom: 10,
+    width: '45%',
+    height: '100%',
+    marginTop: '25%',
+    marginLeft: '4%',
+    height: Platform.OS === 'android' ? '75%' : '10%',
+    width: Platform.OS === 'android' ? '45%' : '10%',
     borderRadius: 30,
     backgroundColor: 'white',
+    borderColor: 'black',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -158,11 +156,12 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   ImageFrame4: {
-    width: 145,
-    height: 212.41,
-    marginTop: 100,
-    marginHorizontal: 15,
-    marginBottom: 10,
+    width: '45%',
+    height: '75%',
+    marginTop: '15%',
+    marginLeft: '4%',
+    height: Platform.OS === 'android' ? '75%' : '10%',
+    width: Platform.OS === 'android' ? '45%' : '10%',
     borderRadius: 30,
     backgroundColor: 'white',
     shadowColor: '#000',
@@ -183,13 +182,7 @@ const styles = StyleSheet.create({
     borderRadius: 70,
     alignSelf: 'center',
   },
-  imageSneacker1: {
-    height: 128,
-    width: 128,
 
-    borderRadius: 70,
-    alignSelf: 'center',
-  },
   title: {
     fontSize: 20,
     fontFamily: 'LeagueGothic-Regular-VariableFont_wdth',

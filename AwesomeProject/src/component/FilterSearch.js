@@ -47,7 +47,7 @@ const FilterSearch = props => {
       setIsSelected(prev => [...prev, name]);
     }
   };
-  console.log('isSelected', isSelected);
+  // console.log('isSelected', isSelected);
 
   return (
     <>
