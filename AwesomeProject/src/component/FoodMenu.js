@@ -3,17 +3,12 @@ import {
   FlatList,
   Image,
   LogBox,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
   View,
-  Dimensions,
-  Platform,
 } from 'react-native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 
 const FoodMenu = props => {
   useEffect(() => {

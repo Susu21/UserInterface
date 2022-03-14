@@ -23,20 +23,19 @@ export default Header;
 
 const styles = StyleSheet.create({
   profilePic: {
-    height: 88,
-    width: 88,
-    marginTop: 80,
-    marginLeft: 25,
+    height: '60%',
+    width: '22%',
+    marginTop: '20%',
+    marginLeft: '3%',
     borderRadius: 82.76,
     position: 'absolute',
     flexDirection: 'column',
     justifyContent: 'center',
   },
   title: {
-    width: 89,
-    height: 34,
-    marginTop: 25,
-    marginLeft: 30,
+    width: '25%',
+    marginTop: '8%',
+    marginLeft: '5%',
     opacity: 87,
     fontWeight: 'bold',
     color: 'black',

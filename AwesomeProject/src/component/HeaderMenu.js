@@ -1,4 +1,10 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React, {useState} from 'react';
 
 import FoodMenu from './FoodMenu';
@@ -12,7 +18,6 @@ const HeaderMenu = () => {
         style={{
           flexDirection: 'row',
           justifyContent: 'center',
-
           marginVertical: 30,
         }}>
         <TouchableOpacity

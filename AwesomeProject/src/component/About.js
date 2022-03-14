@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Dimensions,
   FlatList,
   Image,
   ImageBackground,
@@ -17,8 +16,6 @@ import {
 } from 'react-native-responsive-screen';
 
 const About = props => {
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
   }, []);

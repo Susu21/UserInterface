@@ -106,7 +106,7 @@ const FilterSearch = props => {
         {(conditionSel == 'New' ||
           conditionSel == 'Used' ||
           conditionSel == 'Not Specified') && (
-          <View>
+          <View style={styles.container}>
             <View>
               <Text style={styles.PriceRange}>Price Range</Text>
               <View style={styles.TextInput}>
@@ -339,19 +339,16 @@ export default FilterSearch;
 
 const styles = StyleSheet.create({
   container: {
-    width: 400,
-    height: 50,
-    marginTop: 10,
-
+    flex: 1,
     backgroundColor: '#fff',
   },
   TextInput: {
-    width: 165,
-    height: 50,
-    marginLeft: 20,
+    width: '30%',
+    height: '25%',
+    marginLeft: '4%',
     marginTop: 10,
     borderRadius: 5,
-    borderWidth: 0.5,
+    borderWidth: 2,
 
     borderColor: '#EBF0FF',
     flexDirection: 'row',
@@ -371,9 +368,9 @@ const styles = StyleSheet.create({
     borderColor: 'black',
   },
   TextInput1: {
-    width: 160,
-    height: 50,
-    marginLeft: 170,
+    width: '100%',
+    height: '100%',
+    marginLeft: '90%',
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#EBF0FF',
@@ -505,7 +502,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 21,
     marginLeft: 20,
-    marginTop: 5,
+    marginTop: '2%',
     fontWeight: 'bold',
     fontSize: 14,
     letterSpacing: 0.5,
