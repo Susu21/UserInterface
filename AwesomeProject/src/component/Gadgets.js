@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     // height: Platform.OS === 'android' ? '95%' : '10%',
     // width: Platform.OS === 'android' ? '45%' : '10%',
     marginLeft: '2%',
-    marginTop: '2%',
+    marginTop: '5%',
     borderRadius: 15,
     backgroundColor: 'white',
   },

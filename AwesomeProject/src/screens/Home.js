@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   RefreshControl,
   SafeAreaView,
@@ -7,10 +7,16 @@ import {
   View,
 } from 'react-native';
 import HeaderMenu from '../component/HeaderMenu';
+import DeviceInfo from 'react-native-device-info';
+import Dashboard from '../component/Dashboard';
 const wait = timeout => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 };
 const OnPressFeed = props => {
+  useEffect(() => {
+    const isTablet = DeviceInfo.isTablet();
+    console.log('isTablet*****', isTablet);
+  });
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = useCallback(() => {
@@ -25,7 +31,8 @@ const OnPressFeed = props => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
         <View>
-          <HeaderMenu style={styles.container} />
+          <Dashboard style={styles.container} />
+          {/* <HeaderMenu style={styles.container} /> */}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -34,8 +41,8 @@ const OnPressFeed = props => {
 export default OnPressFeed;
 const styles = StyleSheet.create({
   container: {
-    width: 375,
-    height: 90,
+    width: '100%',
+    height: '100%',
     marginTop: 10,
 
     backgroundColor: '#ffffff',

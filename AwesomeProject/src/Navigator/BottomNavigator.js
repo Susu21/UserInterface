@@ -1,5 +1,7 @@
+import {faL} from '@fortawesome/free-solid-svg-icons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
+import Dashboard from '../component/Dashboard';
 import Home from '../screens/Home';
 import OnPressFeed from '../screens/OnPressFeed';
 
@@ -27,6 +29,15 @@ function BottomNavigator() {
         name="OnPressFeed"
         component={OnPressFeed}
         options={{headerShown: true, tabBarShowLabel: false}}
+      />
+      <Tab.Screen
+        name="Дашбоард"
+        component={Dashboard}
+        options={{
+          headerShown: true,
+          tabBarShowLabel: false,
+          headerTitleAlign: 'center',
+        }}
       />
     </Tab.Navigator>
   );
