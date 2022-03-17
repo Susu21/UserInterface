@@ -1,6 +1,8 @@
 import {faL} from '@fortawesome/free-solid-svg-icons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
+import App from '../component/Chart';
+import Chart from '../component/Chart';
 import Dashboard from '../component/Dashboard';
 import Home from '../screens/Home';
 import OnPressFeed from '../screens/OnPressFeed';
@@ -13,7 +15,7 @@ function BottomNavigator() {
     <Tab.Navigator screenOptions={{tabBarStyle: {position: 'absolute'}}}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={Chart}
         options={
           {
             // headerShown: false,
