@@ -4,6 +4,7 @@ import React from 'react';
 import App from '../component/Chart';
 import Chart from '../component/Chart';
 import Dashboard from '../component/Dashboard';
+import Footer from '../component/Footer';
 import Home from '../screens/Home';
 import OnPressFeed from '../screens/OnPressFeed';
 
@@ -15,19 +16,18 @@ function BottomNavigator() {
     <Tab.Navigator screenOptions={{tabBarStyle: {position: 'absolute'}}}>
       <Tab.Screen
         name="Home"
-        component={Chart}
-        options={
-          {
-            // headerShown: false,
-            // tabBarShowLabel: true,
-            // tabBarHideOnKeyboard: true,
-            // tabBarActiveTintColor: 'grey',
-            // tabBarInactiveTintColor: '#585858',
-            // tabBarIcon: '',
-          }
-        }
+        component={Footer}
+        options={{
+          tabBarHideOnKeyboard: true,
+          // headerShown: false,
+          // tabBarShowLabel: true,
+          // tabBarHideOnKeyboard: true,
+          // tabBarActiveTintColor: 'grey',
+          // tabBarInactiveTintColor: '#585858',
+          // tabBarIcon: '',
+        }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="OnPressFeed"
         component={OnPressFeed}
         options={{headerShown: true, tabBarShowLabel: false}}
@@ -40,7 +40,7 @@ function BottomNavigator() {
           tabBarShowLabel: false,
           headerTitleAlign: 'center',
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 }

@@ -44,11 +44,12 @@
 // }
 // // export default  Chart;
 
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import Pie from 'react-native-pie';
-
+import {AnimatedCircularProgress} from 'react-native-circular-progress';
 export default Chart => {
+  const [fill, setFill] = useState(30);
   return (
     <View style={styles.container}>
       <View
@@ -58,154 +59,72 @@ export default Chart => {
           width: 350,
           justifyContent: 'space-between',
         }}>
-        {/* <Pie
-          radius={80}
-          sections={[
-            {
-              percentage: 10,
-              color: '#C70039',
-            },
-            {
-              percentage: 20,
-              color: '#44CD40',
-            },
-            {
-              percentage: 30,
-              color: '#404FCD',
-            },
-            {
-              percentage: 40,
-              color: '#EBD22F',
-            },
-          ]}
-          strokeCap={'butt'}
-        />
-        <Pie
-          radius={80}
-          innerRadius={50}
-          sections={[
-            {
-              percentage: 10,
-              color: '#C70039',
-            },
-            {
-              percentage: 20,
-              color: '#44CD40',
-            },
-            {
-              percentage: 30,
-              color: '#404FCD',
-            },
-            {
-              percentage: 40,
-              color: '#EBD22F',
-            },
-          ]}
-          strokeCap={'butt'}
-        />
-      </View>
-      <View
-        style={{
-          paddingVertical: 15,
-          flexDirection: 'row',
-          width: 350,
-          justifyContent: 'space-between',
-        }}>
-        <Pie
-          radius={80}
-          innerRadius={60}
-          sections={[
-            {
-              percentage: 10,
-              color: '#C70039',
-            },
-            {
-              percentage: 20,
-              color: '#44CD40',
-            },
-            {
-              percentage: 30,
-              color: '#404FCD',
-            },
-            {
-              percentage: 40,
-              color: '#EBD22F',
-            },
-          ]}
-          dividerSize={4}
-          strokeCap={'round'}
-        />
-        <Pie
-          radius={80}
-          innerRadius={60}
-          sections={[
-            {
-              percentage: 10,
-              color: '#C70039',
-            },
-            {
-              percentage: 20,
-              color: '#44CD40',
-            },
-            {
-              percentage: 30,
-              color: '#404FCD',
-            },
-            {
-              percentage: 40,
-              color: '#EBD22F',
-            },
-          ]}
-          dividerSize={6}
-          strokeCap={'butt'}
-        />
-      </View>
-      <View
-        style={{
-          paddingVertical: 15,
-          width: 350,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
-        <Pie
-          radius={80}
-          sections={[
-            {
-              percentage: 10,
-              color: '#C70039',
-            },
-            {
-              percentage: 20,
-              color: '#44CD40',
-            },
-            {
-              percentage: 30,
-              color: '#404FCD',
-            },
-            {
-              percentage: 40,
-              color: '#EBD22F',
-            },
-          ]}
-          dividerSize={6}
-          strokeCap={'butt'}
-        /> */}
-        <View style={{width: 350, alignItems: 'center'}}>
-          <Pie
+        <View
+          style={{
+            alignItems: 'center',
+            flexDirection: 'row',
+            marginLeft: '15%',
+          }}>
+          <View style={{width: '17%', alignItems: 'center'}}>
+            <Text
+              style={{
+                justifyContent: 'center',
+                fontSize: 16,
+                fontWeight: 'bold',
+                color: 'black',
+              }}>
+              60%
+            </Text>
+            <Text
+              style={{
+                justifyContent: 'center',
+                fontSize: 16,
+                fontWeight: 'bold',
+              }}>
+              Бэлэн
+            </Text>
+          </View>
+          <AnimatedCircularProgress
+            size={120}
+            width={8}
+            fill={fill}
+            duration={5000}
+            arcSweepAngle={360}
+            rotation={0}
+            lineCap={'round'}
+            tintColor="#38E0CF"
+            onAnimationComplete={() => console.log('onAnimationComplete')}
+            backgroundColor="grey">
+            {fill => <Text>{fill + '%'}</Text>}
+          </AnimatedCircularProgress>
+
+          <AnimatedCircularProgress
+            size={120}
+            width={8}
+            fill={15}
+            duration={5000}
+            rotation={0}
+            arcSweepAngle={360}
+            lineCap={'round'}
+            tintColor="#FDC144"
+            onAnimationComplete={() => console.log('onAnimationComplete')}
+            backgroundColor="grey"
+          />
+          {/* <Pie
             radius={65}
-            innerRadius={40}
+            innerRadius={60}
             sections={[
               {
                 percentage: 50,
                 color: 'blue',
               },
             ]}
-            strokeCap={'butt'}
-            backgroundColor="#ddd"
-          />
-          <View style={styles.gauge}>
+            strokeCap="rounded"
+            backgroundColor="#fff"
+          /> */}
+          {/* <View style={styles.gauge}>
             <Text style={styles.gaugeText}>60%</Text>
-          </View>
+          </View> */}
         </View>
       </View>
     </View>
